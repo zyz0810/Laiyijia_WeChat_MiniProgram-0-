@@ -1,0 +1,31 @@
+<view class="page">
+  <view class="bankList" wx:if="{{bankInfoList.length}}">
+    <block wx:for="{{bankInfoList}}" wx:key="{{item}}">
+      <view class='bankInfoList' style='background:{{item.bankInfo.bkgColor?item.bankInfo.bkgColor:"#BF012F"}};'>
+        <view class='lineItem banklist_item'>
+          <view class='left'>
+            <image src="{{item.bankInfo.logo?item.bankInfo.logo:'/resources/images/bank.jpg'}}"></image>
+          </view>
+          <view class='center clr_white'>
+            <view class="name f14">{{item.bankInfo.depositBank}}</view>
+            <view class="cardType f12" wx:if="{{item.type==1}}">储蓄卡</view>
+            <view class="cardType f12" wx:if="{{item.type==0}}">信用卡</view>
+          </view>
+          <view class='right' data-id="{{item.id}}" bindtap='deleteCard'>
+            <text class='iconfont icondelete-01 clr_white'></text>
+          </view>
+        </view>
+        <view class="number clr_white f20">**** **** ****
+          <text class='f25'>{{item.cardNo}}</text>
+        </view>
+      </view>
+    </block>
+  </view>
+  <view class='lineItem lineItem_access addBank clr_lightGray' bindtap='addBank'>
+    <view class='left' style='margin-top:6rpx;'>
+      <text class='iconfont iconjia'></text>
+    </view>
+    <view class='center f14'>添加银行卡</view>
+    <view class='right'></view>
+  </view>
+</view>

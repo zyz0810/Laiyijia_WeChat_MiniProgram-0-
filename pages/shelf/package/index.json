@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "来一架",
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "Parser": "/pages/Parser/index"
+  }
+}

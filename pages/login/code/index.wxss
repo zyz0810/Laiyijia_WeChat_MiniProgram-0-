@@ -1,0 +1,42 @@
+/* pages/login/code/index.wxss */
+
+page {
+  background: #fff;
+}
+
+.container {
+  padding: 80rpx 54rpx 0;
+}
+
+.title {
+  margin-bottom: 20rpx;
+}
+
+.code {
+  display: flex;
+  flex-direction: row;
+  padding: 80rpx 0 0;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.code text {
+  display: block;
+  flex: 1;
+  text-align: center;
+  margin: 0 10rpx;
+  line-height: 3;
+  border-bottom: 1px solid #e8e8e8;
+  height: 100rpx;
+}
+
+.code input {
+  position: absolute;
+  width: 1000rpx;
+  right: 0;
+  height: 100rpx;
+}
+
+.sendAgain {
+  margin-top: 20rpx;
+}

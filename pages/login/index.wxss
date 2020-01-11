@@ -1,0 +1,39 @@
+/* pages/login/index.wxss */
+
+page {
+  background: #fff;
+}
+
+/* .adSwiper image {
+  height: 80vh !important;
+} */
+
+.login {
+  width: 100%;
+  height: 20vh;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+}
+
+.weixin {
+  width: 80%;
+  /* padding: 20rpx 0; */
+  margin: 40rpx auto 20rpx;
+  background: #20a424;
+  border-radius: 50rpx;
+  line-height: 90rpx;
+  height: 90rpx;
+}
+
+.mobile {
+  padding: 10rpx 0 25rpx;
+}
+
+.weixin .iconfont {
+  margin-right: 20rpx;
+}
+
+swiper {
+  height: 80vh !important;
+}

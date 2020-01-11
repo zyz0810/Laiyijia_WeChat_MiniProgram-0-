@@ -1,0 +1,132 @@
+<!--pages/shelf/self/index.wxml-->
+<view class='container'>
+  <!-- <view class='list_item' wx:for="{{shelvesList}}" wx:key="*this">
+    <view class='lineItem'>
+      <view class='center item'>
+        <view class='lineItem name'>
+          <view class='center f14 clr_mediumGray bold'>{{item.deliveryCenterName}}</view>
+          <view class='right f12 clr_purple'>审核中</view>
+        </view>
+        <view class='f12 clr_gold02 border_bottom shelf_num'>货架号：{{item.shelvesNo}}</view>
+        <view class='lineItem f14 clr_gold02 sale_num'>
+          <view class='left'>销售单数：</view>
+          <view class='center tr'>{{item.salesVolume}}单</view>
+        </view>
+
+      </view>
+    </view>
+    <view class='f18 clr_yellow bold income'>收入合计 ￥{{item.sales}}</view>
+  </view> -->
+  <view class='tab flex tc f16'>
+    <view class='flex-item {{currentTab==0?"active":""}}' data-tab='0' bindtap='tabTap'>
+      <text>我的货架</text>
+    </view>
+    <view class='flex-item {{currentTab==1?"active":""}}' data-tab='1' bindtap='tabTap'>
+      <text>我发展的</text>
+    </view>
+  </view>
+
+  <view hidden='{{currentTab!=0}}'>
+    <view class='list_item' wx:for="{{shelvesList}}" wx:key="*this">
+      <view class='lineItem' data-id="{{item.deliveryCenterId}}" bindtap='goOrderList' data-name="{{item.deliveryCenterName}}">
+        <view class='center item'>
+          <view class='lineItem name'>
+            <view class='center clr_mediumGray'>
+              <view>
+                <text class='f14 bold'>{{item.deliveryCenterName}}</text>
+                <text class='f11' style='margin-left:20rpx;'>({{item.tenantName}})</text>
+              </view>
+            </view>
+            <!-- <view class='right f12 clr_purple'>审核中</view> -->
+          </view>
+          <view class='flex memberInfo'>
+            <view class='flex-item' wx:for="{{item.shelvesRebates}}" wx:for-item="sitem" wx:key="{{sitem.memberId}}">
+              <view class='f14 radiusWord' wx:if="{{memberIdNow==sitem.memberId}}">我的</view>
+              <view class='f14 radiusWord' wx:else>店主</view>
+              <view class='f16 clr_mediumGray'>￥{{sitem.totalAmount}}</view>
+            </view>
+          </view>
+
+
+
+        </view>
+      </view>
+      <view class='flex f14 clr_gold02 sale_num' style='line-height:2;align-items:center;background:#fff;padding:2%;'>
+        <view class='flex-item tl'>销售数：{{item.salesVolume}}单</view>
+        <view class='flex-item tc'>销售额：￥{{item.sales}}</view>
+        <view class='flex-item tc replenish' bindtap='goReplenish' data-no="{{item.shelvesNo}}" data-tenantid='{{item.tenantId}}'>补货记录
+          <text class='tips f12' wx:if="{{item.replenisCount>0}}">{{item.replenisCount}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+
+  <view hidden='{{currentTab!=1}}'>
+    <view class='list_item' wx:for="{{shelvesList}}" wx:key="*this">
+      <view class='lineItem' data-id="{{item.deliveryCenterId}}" bindtap='goOrderList' data-name="{{item.deliveryCenterName}}">
+        <view class='center item'>
+          <view class='lineItem name'>
+            <view class='center  clr_mediumGray'>
+              <view>
+                <text class='f14 bold'>{{item.deliveryCenterName}}</text>
+                <text class='f11' style='margin-left:20rpx;'>({{item.tenantName}})</text>
+              </view>
+            </view>
+            <!-- <view class='right f12 clr_purple'>审核中</view> -->
+          </view>
+          <view class='flex memberInfo'>
+            <view class='flex-item' wx:for="{{item.shelvesRebates}}" wx:for-item="sitem" wx:key="{{sitem.memberId}}">
+              <view class='f14 radiusWord' wx:if="{{memberIdNow==sitem.memberId}}">我的</view>
+              <view class='f14 radiusWord' wx:else>店主</view>
+              <view class='f16 clr_mediumGray'>￥{{sitem.totalAmount}}</view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class='flex f14 clr_gold02 sale_num' style='line-height:2;align-items:center;background:#fff;padding:2%;'>
+        <view class='flex-item tl'>销售单数：{{item.salesVolume}}单</view>
+        <view class='flex-item tl'>销售额：￥{{item.sales}}</view>
+        <!-- <view class='flex-item tc replenish' bindtap='goReplenish'>补货记录
+        <text class='tips f12'>2</text>
+      </view> -->
+      </view>
+    </view>
+  </view>
+
+
+  <!-- <view class='add f40 clr_white tc' bindtap='goMarket'>+</view> -->
+  <!-- <movable-area>
+    <movable-view class='f40 clr_white tc' direction="all" animation="{{animation}}" inertia="true" x="{{leftValue}}" y="{{topValue}}" bindtap='goMarket'>+</movable-view>
+  </movable-area> -->
+
+  <movable-area>
+    <movable-view class='f40 clr_white tc' direction="all" animation="{{animation}}" inertia="true" x="{{leftValue}}" y="{{topValue}}">
+      <button class='formButton' open-type='getUserInfo' bindgetuserinfo="inviteFriend">
+        <image src='/resources/images/home/xuanfu.png'></image>
+      </button>
+    </movable-view>
+  </movable-area>
+
+</view>
+
+<view class='container' wx:if="{{shelvesList.length==0}}">
+  <view style='height:200rpx;'></view>
+  <view class='kong'>
+    <image src='http://cdn.laiyijia.com/upload/image/201905/43c7420d-118e-4b99-9ed0-fac209a21c86.png'></image>
+  </view>
+  <!-- <view class='goMarket f16 clr_white tc' bindtap='goMarket'>前往品牌市场</view> -->
+</view>
+
+<view class="tips" hidden="{{showtips}}">{{tips}}</view>
+<canvas canvas-id="myCanvas" style="width:{{canvasw}};height:{{canvash}};position:absolute;left:-{{canvasw}}" hidden='{{canvasHide}}' />
+<view class='defaultMask' wx:if="{{showAction}}" bindtap='closeMask' catchtouchmove="stopPageScroll"></view>
+<image src='{{shareImageSrc}}' wx:if="{{showAction}}" bindtap='closeMask' style='position:fixed;top:{{imgTop}};width:500rpx;left:125rpx;z-index:1001;height:890rpx;' catchtouchmove="stopPageScroll"></image>
+<view class='flex shareTenantAction' wx:if="{{showAction}}">
+  <view class='flex-item tc'>
+    <view class='clr_lightGray f12 tc'>
+      <image src='http://cdn.huolangjia.cn/upload/image/201906/788f78fe-14f4-40a2-9454-3c7da3012784.png' bindtap='saveImage' style='width:100rpx;height:100rpx;display:inline-block;'></image>
+    </view>
+    <view class='f12 clr_white tc'>下载到本地</view>
+  </view>
+</view>

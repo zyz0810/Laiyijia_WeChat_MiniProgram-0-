@@ -1,0 +1,26 @@
+<!--pages/login/login/index.wxml-->
+<view class='container'>
+  <view class='title f22 clr_mediumGray tc'>欢迎使用来一架</view>
+  <view class='f14 clr_lightGray tc'>让生意更简单</view>
+  <view class='mobile'>
+    <view class='clearfix f14 border_bottom mobile_num'>
+      <text class='fl txt clr_gray01'>+86</text>
+      <input class='fl' placeholder="输入手机号" placeholder-class='f14 clr_gray01' class='f16' value='{{phone}}' type='number' maxlength='11' bindinput="bindChange" focus />
+      <text class='fr iconfont iconquxiao f14 clr_lightGray' hidden='{{phone.length==0}}' bindtap='deleteMobile'></text>
+    </view>
+    <view class='go_code f14 tc clr_white {{phone.length==11?" active":""}}' bindtap='getcode'>开始</view>
+    <view class='intro f12'>点击开始，即表示已阅读并同意</view>
+    <view class='f12 clr_lightGray'>《法律条款及隐私政策》</view>
+  </view>
+</view>
+<view class='bottom f12 clr_lightGray tc'>
+  <view>
+    <text class='line'></text>
+    <text class='login_mode'>其他登录方式</text>
+    <text class='line'></text>
+  </view>
+  <button class='login_weixin tc formButton' open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">
+    <view class='iconfont iconweixin1 f40 clr_wxGreen'></view>
+    <view class='f12 clr_lightGray'>微信</view>
+  </button>
+</view>

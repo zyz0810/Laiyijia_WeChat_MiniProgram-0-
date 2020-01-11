@@ -1,0 +1,73 @@
+/* pages/shop/create/index.wxss */
+page{
+  background: #fff;
+}
+.submit_btn{
+  width: 80%;
+  height: 80rpx;
+  line-height: 80rpx;
+  /* margin: 200rpx auto; */
+  border-radius: 50rpx;
+  background: #6c69ff;
+  position: absolute;
+  bottom: -30rpx;
+  left: 10%;
+}
+.choosebg {
+  background: #fff;
+  display: block;
+  height: 100%;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 120;
+  overflow-y: scroll;
+}
+
+.citybg {
+  z-index: 121;
+}
+
+.choosebg>view {
+  padding: 20rpx 0 20rpx 2%;
+  border-bottom: 1rpx solid #f1f1f1;
+}
+.tip{
+  margin: 20rpx 0 50rpx;
+}
+.agreement{
+  margin: 60rpx 0 50rpx;
+}
+.agreement checkbox{
+  transform: scale(0.8,0.8);
+  margin-bottom: 3px;
+}
+
+.top_bg image{
+  width: 750rpx;
+  height: 350rpx;
+}
+
+.form{
+  display: block;
+  width: 70%;
+  background: #fff;
+  margin: -100rpx auto 0;
+  position: relative;
+  z-index: 9;
+  padding: 50rpx 5%;
+  border-radius: 50rpx;
+  box-shadow: 0 20rpx 20rpx #bebdf7;
+}
+.info{
+  padding: 4% 6%;
+}
+.info .center{
+  padding-left: 20rpx;
+}
+
+checkbox .wx-checkbox-input.wx-checkbox-input-checked {
+  background: #6c69ff;
+  border: 1px solid #6c69ff;
+}

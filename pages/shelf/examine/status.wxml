@@ -1,0 +1,31 @@
+<view class="progress">
+  <view class="lineItem">
+    <view class="left">
+      <text class='progressDot iconfont icondian clr_orange f30' style='color:#1AAD19'></text>
+      <!-- <view wx:if="{{index != 0}}" class="progressLine baseBg"></view> -->
+    </view>
+    <view class="center">
+      <view class="f16 proTitle">发起加盟申请</view>
+    </view>
+  </view>
+  <view class="lineItem">
+    <view class="left">
+      <text class='progressDot iconfont icontime clr_orange f30' style='color:#10AEFF'></text>
+      <view class="progressLine" style='border-left: 1px dotted #1AAD19;bottom:62%;'></view>
+    </view>
+    <view class="center">
+      <view class="f16 proTitle">加盟审核中</view>
+      <view class="f14">预计04-20前审核通过</view>
+    </view>
+  </view>
+  <view class="lineItem">
+    <view class="left">
+      <text class='progressDot iconfont icondian clr_orange f30' style='color:#D9D9D9'></text>
+      <view class="progressLine" style='border-left: 1px dotted #D9D9D9;bottom:42%;'></view>
+    </view>
+    <view class="center">
+      <view class="f16 proTitle">审核通过</view>
+    </view>
+  </view>
+</view>
+<view class='success tc f16'>完成</view>

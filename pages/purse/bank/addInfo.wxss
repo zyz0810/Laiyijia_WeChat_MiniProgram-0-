@@ -1,0 +1,33 @@
+.itemInput .itemleft {
+  width: 200rpx;
+}
+
+.itemInput .itemright {
+  position: static;
+}
+
+.searchNameList {
+  width: 100%;
+  line-height: 2;
+  font-size: 28rpx;
+  background: #fff;
+  box-shadow: 0 2px 5px -2px #333;
+  border-top: 1px solid #eee;
+  max-height: 40vh;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  position: absolute;
+  top: 100rpx;
+  z-index: 1001;
+}
+
+.searchNameList view {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #eee;
+  padding: 1% 5%;
+}
+
+.itemInput .itemcenter {
+  padding-right: 0;
+}

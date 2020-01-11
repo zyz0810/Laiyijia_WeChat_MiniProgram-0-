@@ -1,0 +1,84 @@
+/* pages/team/index.wxss */
+
+page {
+  background: #fff;
+}
+
+.top {
+  padding: 50rpx 4%;
+  border-bottom: 20rpx solid #f4f4f4;
+}
+
+
+.tab .time .time_item:nth-child(1){
+  padding: 0 20rpx 0 0;
+}
+
+.tab .time .time_item:nth-child(2) {
+  padding: 0 20rpx;
+  border-left: 3rpx solid #333;
+  border-right: 3rpx solid #333;
+}
+.tab .time .time_item:nth-child(3){
+  padding: 0 20rpx;
+}
+
+
+.screen {
+  margin-top: 40rpx;
+}
+
+.middle {
+  margin: 40rpx 0 0;
+}
+
+.middle .flex-item {
+  box-shadow: 0 0 5rpx #ccc;
+  border-bottom-left-radius: 10rpx;
+  border-bottom-right-radius: 10rpx;
+}
+
+.num {
+  line-height: 3;
+}
+
+.middle .flex-item:nth-child(2) {
+  margin: 0 30rpx;
+}
+
+.middle .flex-item:nth-child(1) .top_bg, .middle .flex-item:nth-child(2) .top_bg {
+  position: relative;
+  padding: 10rpx 0;
+}
+
+.middle .flex-item:nth-child(1) .top_bg {
+  background: #f64b5c;
+}
+
+.middle .flex-item:nth-child(2) .top_bg {
+  background: #5147ec;
+}
+
+.middle .flex-item:nth-child(3) {
+  padding: 20rpx 0 0;
+  line-height: 1;
+}
+
+.middle .flex-item:nth-child(3) .iconfont {
+  color: #fd6a72;
+}
+
+.list .flex.title {
+  background: transparent;
+}
+
+.list .flex {
+  width: 92%;
+  padding: 10rpx 0;
+  margin: 20rpx auto 0;
+  background: #f4f4f4;
+  border-radius: 20rpx;
+}
+.list .flex .flex-item{
+  padding: 0 5rpx;
+}

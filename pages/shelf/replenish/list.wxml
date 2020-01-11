@@ -1,0 +1,18 @@
+<!--pages/shelf/replenish/list.wxml-->
+<view class='list_item' wx:for="{{listData}}" wx:key="*this">
+  <view class='overtwo f14 productName'>{{item.name}}</view>
+  <view class='flex clr_mediumGray'>
+    <view class='flex-item f12'>补货数量：{{item.quantity}}</view>
+    <view class='flex-item f12'>补货时间:{{item.createDate}}</view>
+  </view>
+  <view class='flex clr_mediumGray status'>
+    <view class='flex-item f12'>补货状态：
+      <text class='clr_red' wx:if="{{item.deliveryStatus==1}}">已配送待签收</text>
+      <text class='clr_red' wx:if="{{item.deliveryStatus==2}}">已完成</text>
+    </view>
+    <view class='flex-item f12'>操作人：{{item.operator}}</view>
+  </view>
+  <button class='clr_white f14 formButton optBtn' wx:if="{{item.deliveryStatus==1}}" data-id="{{item.retrievalId}}" bindtap='goDetail'>查看详情并确认签收</button>
+  <button class='clr_white f14 formButton optBtn' wx:if="{{item.deliveryStatus==2}}" data-id="{{item.retrievalId}}" bindtap='goDetail' style='background:#999'>查看详情</button>
+</view>
+<view class="tips" hidden="{{showtips}}">{{tips}}</view>

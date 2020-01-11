@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "货架套餐详情",
+  "usingComponents": {
+    "Parser": "/pages/Parser/index"
+  }
+}

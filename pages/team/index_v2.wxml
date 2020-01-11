@@ -1,0 +1,84 @@
+<!--pages/team/index.wxml-->
+<view class='top'>
+  <view class='tab clearfix f16'>
+    <view class='time tc bold'>
+      <view data-id='0' data-date='today' class='time_item fl tl {{date == "today"?"clr_red":""}}' bindtap='tabClick'>今日</view>
+      <view data-id='1' data-date='thisWeek' class='time_item fl {{date == "thisWeek"?"clr_red":""}}' bindtap='tabClick'>本周</view>
+      <view data-id='2' data-date='thisMonth' class='time_item fl {{date == "thisMonth"?"clr_red":""}}' bindtap='tabClick'>本月</view>
+    </view>
+  </view>
+  <view class='f12 screen clearfix'>
+  <text class='fl'>开始日期—结束日期：</text>
+    <view class='clr_lightGray fl'>
+      <picker mode="date" value="{{dateStart}}" start="2015-09-01" end="{{nowYear}}-{{nowMonth}}-{{nowDay}}" bindchange="bindStartChange" class='fl'>
+        <view class="picker">{{dateStart}}</view>
+      </picker>
+      <view class='fl'>-</view>
+      <picker mode="date" value="{{dateEnd}}" start="2015-09-01" end="{{nowYear}}-{{nowMonth}}-{{nowDay}}" bindchange="bindEndChange" class='fl'>
+        <view class="picker">{{dateEnd}}</view>
+      </picker>
+    </view>
+
+  </view>
+  <view> </view>
+  <view class='flex middle tc'>
+    <view class='flex-item'>
+      <view class='f12 clr_white top_bg'>店主收入</view>
+      <view class='f18 bold num'>￥151.2564</view>
+    </view>
+    <view class='flex-item'>
+      <view class='f12 clr_white top_bg'>员工人数</view>
+      <view class='f18 bold num'>88人</view>
+    </view>
+    <button class='flex-item formButton' open-type='share'>
+      <text class='iconfont iconyuangongguanli f40'></text>
+      <view class='f12 clr_blue03'>添加员工</view>
+    </button>
+  </view>
+</view>
+<view class='list f12'>
+  <!-- <view class='lineItem border_bottom' wx:for="{{dataList}}" wx:key="*this" data-id="{{item.memberId}}" bindtap='goView'>
+    <view class='left'>
+      <image src='{{item.headImg?item.headImg:"http://cdn.tiaohuo.com/upload/image/201905/6f15e40d-ce9d-453c-a17e-d058bbabade9.png"}}'></image>
+    </view>
+    <view class='center f16 bold500'>
+      <view>{{item.name}}</view>
+      <view class='f14 clr_lightGray'>{{item.createDateStr}}</view>
+    </view>
+    <view class='right'>
+      <view class='f20'>+{{item.brokerage}}</view>
+      <view class='f12 clr_orange02' wx:if="{{item.brokerage>0}}">已入账</view>
+    </view>
+  </view> -->
+  <view class='flex f14 bold tc title'>
+    <view class='flex-item'>姓名</view>
+    <view class='flex-item'>订单号</view>
+    <view class='flex-item'>订单金额</view>
+    <view class='flex-item'>店主收入</view>
+  </view>
+  <view class='flex tc clr_lightGray' bindtap='goView'>
+    <view class='flex-item overone'>李易峰</view>
+    <view class='flex-item'>201912524</view>
+    <view class='flex-item'>1568，52</view>
+    <view class='flex-item'>453,63</view>
+  </view>
+  <view class='flex tc clr_lightGray' bindtap='goView'>
+    <view class='flex-item overone'>李易峰</view>
+    <view class='flex-item'>201912524</view>
+    <view class='flex-item'>1568，52</view>
+    <view class='flex-item'>563,63</view>
+  </view>
+  <view class='flex tc clr_lightGray' bindtap='goView'>
+    <view class='flex-item overone'>李易峰</view>
+    <view class='flex-item'>201912524</view>
+    <view class='flex-item'>1568，52</view>
+    <view class='flex-item'>538,63</view>
+  </view>
+  <view class='flex tc clr_lightGray' bindtap='goView'>
+    <view class='flex-item overone'>李易峰</view>
+    <view class='flex-item'>201912524</view>
+    <view class='flex-item'>1568，52</view>
+    <view class='flex-item'>535,63</view>
+  </view>
+  <view class="tips" hidden="{{showtips}}">{{tips}}</view>
+</view>

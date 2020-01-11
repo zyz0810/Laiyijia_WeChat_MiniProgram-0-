@@ -1,0 +1,13 @@
+<!--pages/purse/bank/code.wxml-->
+<view>
+  <view class='f16 font500 tc padding2'>接收验证码：{{mobile}}</view>
+  <view class='f12 font500 tc clr_mediumGray padding2'>绑定银行卡需要进行短信验证</view>
+  <view class="itemInput">
+    <view class="itemleft tc">验证码</view>
+    <view class="itemcenter">
+      <input placeholder="请填写验证码" type='text' bindinput="captcha" placeholder-style="font-size:14px;" maxlength='6' />
+    </view>
+    <view class="itemright clr_lightGray f14 tc" bindtap='getcode'>{{tips}}</view>
+  </view>
+  <button class="defaultBtn" style='background:{{bgBtn}}' bindtap="submit">下一步</button>
+</view>

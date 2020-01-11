@@ -1,0 +1,122 @@
+<!--pages/purse/index.wxml-->
+<view class='purseIndex'>
+  <view class='lineItem lineItem_access f12 topTips clr_white' wx:if="{{authStatus!=2}}" bindtap='goAuth'>
+    <view class='left'>
+      <text class='iconfont icontishi'></text>
+    </view>
+    <view class='center'>首次提现需完成实名认证</view>
+    <view class='right clr_white' wx:if="{{authStatus==0}}">去认证</view>
+    <view class='right clr_white' wx:if="{{authStatus==1}}">认证中</view>
+    <view class='right clr_white' wx:if="{{authStatus==3}}">认证失败</view>
+  </view>
+
+  <!-- <swiper autoplay="true" class='topTipsSwiper'>
+    <block wx:for="{{topTips}}" wx:key="index">
+      <swiper-item class="f12 clr_white">
+        <view class='lineItem lineItem_access f14 topTips clr_white' bindtap='goAuth' hidden='{{item.id!=0}}'>
+          <view class='left'>
+            <text class='iconfont icontishi'></text>
+          </view>
+          <view class='center'>{{item.name}}</view>
+          <view class='right clr_white' wx:if="{{authStatus==0}}">去认证</view>
+          <view class='right clr_white' wx:if="{{authStatus==1}}">认证中</view>
+          <view class='right clr_white' wx:if="{{authStatus==3}}">认证失败</view>
+        </view>
+        <view class='lineItem lineItem_access f14 topTips clr_white' hidden='{{item.id==0}}'>
+          <view class='left'>
+            <text class='iconfont icontishi'></text>
+          </view>
+          <view class='center'><view><text class='clr_red'>{{item.span}}</text>{{item.name}}</view></view>
+        </view>
+      </swiper-item>
+    </block>
+  </swiper> -->
+
+
+  <view class='purse_info_bg'>
+    <view class='purse_info f14 clr_white'>
+      <view>
+        <view class='iconBg tc'>
+          <text class='iconfont icontixian'></text>
+        </view>
+        可提现 (元)
+      </view>
+      <view class='flex'>
+        <view class='flex-item f25'>{{balance}}</view>
+        <view class='flex-item f14 tr'>
+         <form bindsubmit="goCash" report-submit>
+            <button class='formButton cashBtn f14' form-type="submit" style='display:inline-block;line-height:1.4;background:transparent;'>提现
+            </button>
+          </form>
+          <!-- <text class='cashBtn'>提现</text> -->
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class='lineItem purse_info_same'>
+    <view class='left'></view>
+    <view class='center'>
+      <view class='f14'>待入账(元)
+        <text class='iconfont iconiconset0143 freezeBalance' bindtouchstart='touchstart' bindtouchend='touchend'></text>
+      </view>
+      <view class='f20 clr_red'>{{freezeBalance}}</view>
+    </view>
+    <view class='right f14' bindtap='goFreezing'>
+      <text class='cashBtn'>查看</text>
+    </view>
+  </view>
+
+  <view class='lineItem  f12 bottomTips' wx:if="{{authStatus==2}}">
+    <view class='left'>
+      <text class='iconfont icongou f14 clr_wxGreen'></text>
+    </view>
+    <view class='center f12'>您的身份认证成功</view>
+    <view class='right clr_white'></view>
+  </view>
+  <view class='purseBill'>
+    <view class='billList lineItem' wx:for="{{billList}}" wx:key="*this">
+      <view class='left'>
+        <image src='http://cdn.laiyijia.com/upload/image/201905/6f15e40d-ce9d-453c-a17e-d058bbabade9.png'></image>
+      </view>
+      <view class='center'>
+        <view class='f14 bold' wx:if="{{item.type==0}}">充值</view>
+        <view class='f14 bold' wx:if="{{item.type==1}}">购物</view>
+        <view class='f14 bold' wx:if="{{item.type==2}}">提现
+          <text class='f12 clr_gold02'>{{item.memo}}</text>
+        </view>
+        <view class='f14 bold' wx:if="{{item.type==3}}">货款</view>
+        <view class='f14 bold' wx:if="{{item.type==4}}">分润
+          <text class='f12 clr_gold02'>{{item.memo}}</text>
+        </view>
+        <view class='f14 bold' wx:if="{{item.type==5}}">佣金支出</view>
+        <view class='f14 bold' wx:if="{{item.type==6}}">收款收入</view>
+        <view class='f14 bold' wx:if="{{item.type==7}}">其他收入</view>
+        <view class='f14 bold' wx:if="{{item.type==8}}">其他支出</view>
+        <view class='f14 bold' wx:if="{{item.type==9}}">红包收入</view>
+        <view class='f14 bold' wx:if="{{item.type==10}}">红包支出</view>
+        <view class='f14 bold' wx:if="{{item.type==11}}">合伙人收入</view>
+        <view class='f12 clr_gold02' wx:if="{{item.orderSn}}">订单编号：{{item.orderSn}}</view>
+        <view class='f12 clr_gold02'>{{item.createDate}}</view>
+      </view>
+      <view class='right'>
+        <!-- <view class='f20'>+9.90</view> -->
+        <view class='f20' style="font-weight:normal;" wx:if="{{item.debit!=0}}">{{item.debit>0?('-'+item.debit):('+'+(item.debit)*-1)}}</view>
+        <view class='f20' style="font-weight:normal;color:{{mainColor}}" wx:if="{{item.credit!=0}}">{{item.credit>0?('+'+item.credit):('-'+-item.credit)}}
+        </view>
+        <view class='f20' style="font-weight:normal;color:{{mainColor}}" wx:if="{{item.credit==0 && item.debit==0}}">+0
+        </view>
+        <view class='f12 desc clr_lightGray' wx:if="{{item.status==0 && item.credit>0}}">未到账</view>
+        <view class='f12 desc clr_lightGray' wx:if="{{item.status==0 && item.debit!=0}}">未出账</view>
+        <view class='f12 desc clr_orange' wx:if="{{item.status==1 && item.credit>0}}">已到账</view>
+        <view class='f12 desc clr_lightGray' wx:if="{{item.status==1 && item.debit!=0}}">已出账</view>
+        <!-- <view class='f12 desc clr_lightGray' wx:if="{{item.status==0 && item.credit>0 && item.method==0}}">未到账</view>
+        <view class='f12 desc clr_lightGray' wx:if="{{item.status==0 && item.debit!=0 && item.method==0}}">未出账</view>
+        <view class='f12 desc clr_orange' wx:if="{{item.status==1 && item.credit>0 && item.method==0}}">已到账</view>
+        <view class='f12 desc clr_lightGray' wx:if="{{item.status==1 && item.debit!=0 && item.method==0}}">已出账</view>
+        <view class='f12 desc clr_orange' wx:if="{{item.method==1}}">银联入网</view> -->
+      </view>
+    </view>
+  </view>
+  <view class="tips" hidden="{{showtips}}">{{tips}}</view>
+</view>

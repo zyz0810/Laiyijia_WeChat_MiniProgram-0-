@@ -1,0 +1,11 @@
+<!--pages/login/index.wxml-->
+
+<!--swiper  -->
+<import src="/template/swiper/swiper.wxml" />
+<!--轮播  -->
+<template is="adSwiper" data="{{_swiper,name:'top',data:topImgs.data,key:topImgs.key,fn:'adTap',showDot:true}}"></template>
+<view class='login'>
+  <button class='weixin clr_white f16 tc' open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">
+    <text class='iconfont iconweixin clr-white'></text>微信授权登录</button>
+  <view class='mobile f16 clr_mediumGray tc' bindtap='goMobile'>手机号登录</view>
+</view>

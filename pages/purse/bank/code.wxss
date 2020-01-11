@@ -1,0 +1,22 @@
+/* pages/purse/bank/code.wxss */
+
+page {
+  background: #ededed;
+}
+
+.itemInput {
+  margin: 4% 0 16%;
+}
+
+.itemInput .itemleft {
+  width: 20%;
+}
+
+.itemInput .itemcenter {
+  width: 50%;
+}
+
+.itemInput .itemright {
+  width: 30%;
+  border-left: 1px solid #f1f1f1;
+}

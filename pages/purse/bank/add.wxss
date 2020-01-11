@@ -1,0 +1,41 @@
+/* pages/purse/bank/add.wxss */
+
+.line {
+  display: flex;
+  font-size: 30rpx;
+  background: #fff;
+  margin-bottom: 1px;
+  padding: 4% 2%;
+}
+
+.line .head {
+  width: 30%;
+  height: 1.4rem;
+  line-height: 1.4rem;
+}
+
+.classname text {
+  overflow: hidden;
+}
+
+.classname input {
+  width: 500rpx;
+}
+
+.code {
+  position: absolute;
+  right: 2%;
+  z-index: 100;
+}
+
+.submit {
+  width: 90%;
+  line-height: 2;
+  background: #08bb06;
+  color: #fff;
+  margin-top: 20px;
+}
+
+.itemInput .itemleft {
+  width: 400rpx;
+}

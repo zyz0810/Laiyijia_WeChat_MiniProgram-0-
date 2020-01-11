@@ -1,0 +1,11 @@
+/* pages/team/share/index.wxss */
+page{
+  background: #fff;
+}
+.login{
+  width: 90%;
+  line-height: 3;
+  margin: 50rpx auto;
+  background: #FEC965;
+  border-radius: 10rpx;
+}

@@ -1,0 +1,330 @@
+/* pages/index/home.wxss */
+
+.container {
+  padding: 20rpx 20rpx 51px;
+  box-sizing: border-box;
+}
+
+.privilege {
+  padding: 40rpx 0;
+  background: url("http://cdn.laiyijia.com/upload/image/201912/8a871eda-4dc4-4b33-a5d7-52627e721d29.png") no-repeat;
+  background-position: 0 0;
+  background-size: 100% 100%;
+}
+
+.privilege_item image {
+  width: 138rpx;
+  height: 138rpx;
+  margin: 0;
+}
+
+.privilege_btn {
+  padding: 20rpx;
+  /* position: absolute;
+  z-index: 999;
+  top: -14rpx;
+  right: 0; */
+}
+
+.tit_two {
+  margin: 10rpx 0 30rpx;
+}
+
+.toMiniProgramBtn {
+  background: #09f;
+  border: none;
+  letter-spacing: 1px;
+  width: 678rpx;
+  height: 110rpx;
+  line-height: 110rpx;
+  background: url('http://cdn.laiyijia.com/upload/image/201912/46c7f6a5-e43d-4511-829d-a4e7ce87544c.png') no-repeat;
+  background-position: 0 0;
+  background-size: 100% 100%;
+  margin-top: 30rpx;
+}
+
+.toMiniProgramBtn::before, .toMiniProgramBtn::after {
+  border: none;
+}
+
+.course_item .center {
+  width: 33rpx;
+  padding: 10rpx 0;
+  justify-content: space-between;
+}
+
+.course_item .right {
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+
+.course_item .left image {
+  width: 250rpx;
+  height: 180rpx;
+  border-radius: 10rpx;
+  margin-right: 20rpx;
+}
+
+/* 新人特惠 */
+
+.preferential {
+  margin: 40rpx 0;
+}
+
+.preferential_ad image {
+  width: 100%;
+  height: 180rpx;
+  margin: 20rpx 0;
+  border-radius: 20rpx;
+}
+
+.preferential_product {
+  padding: 20rpx;
+  border-radius: 10rpx;
+  background: #fff;
+}
+
+.preferential_product_item {
+  width: 215rpx;
+  position: relative;
+  background: #f4f4f4;
+}
+
+.preferential_product_item:nth-child(2) {
+  margin: 0 15rpx;
+}
+
+.preferential_product_item .preferential_img image {
+  width: 100%;
+  height: 215rpx;
+}
+
+.preferential_txt {
+  padding: 0 10rpx 10rpx;
+  /* height: 240rpx; */
+}
+
+.stock {
+  margin: 10rpx 0;
+  position: relative;
+}
+
+.iconbijia {
+  position: absolute;
+  right: -10rpx;
+  top: -3rpx;
+  z-index: 999;
+  padding: 10rpx;
+}
+
+.price {
+  margin-right: 10rpx;
+}
+
+.market_price {
+  text-decoration: line-through;
+}
+
+.preferential_tag {
+  position: absolute;
+  top: 0;
+  right: 10rpx;
+  background: #11b68c;
+  width: 60rpx;
+  padding: 5rpx 0 0rpx;
+}
+
+.preferential_tag view {
+  line-height: 1.2;
+}
+
+.triangle_left {
+  width: 0;
+  height: 0;
+  border-top: 20rpx solid #11b68c;
+  border-right: 40rpx solid transparent;
+  border-left: 0rpx solid transparent;
+  position: absolute;
+  left: 0;
+  bottom: -18rpx;
+}
+
+.triangle_right {
+  width: 0;
+  height: 0;
+  border-top: 20rpx solid #11b68c;
+  border-right: 0rpx solid transparent;
+  border-left: 40rpx solid transparent;
+  position: absolute;
+  right: 0;
+  bottom: -18rpx;
+}
+
+.goMall {
+  padding: 3rpx 0;
+  margin-top: 5rpx;
+  border: 1px solid red;
+  border-radius: 40rpx;
+}
+
+.course {
+  margin-bottom: 20rpx;
+}
+
+.course_tit .flex-item {
+  /* margin: 20rpx 0; */
+  padding: 5px 0;
+  background: #e8e8e8;
+  max-width: 50%;
+}
+
+.course_tit .flex-item:nth-child(1) {
+  margin: 20rpx 10rpx 20rpx 0;
+}
+
+.course_tit .flex-item:nth-child(2), .course_tit .flex-item:nth-child(3) {
+  margin: 20rpx 10rpx;
+}
+
+.course_tit .flex-item:nth-child(4) {
+  margin: 20rpx 0 20rpx 10rpx;
+}
+
+.course_cont {
+  padding: 0 20rpx 20rpx;
+  margin-top: 20rpx;
+  background: #fff;
+  border-radius: 10rpx;
+}
+
+.goTeach {
+  padding: 0 20rpx;
+  border: 1px solid red;
+  border-radius: 20rpx;
+}
+
+.activityRule {
+  position: fixed;
+  top: 140rpx;
+  /* background: #fff; */
+  width: 600rpx;
+  /* height: 65vh; */
+  left: 75rpx;
+  z-index: 1010;
+  /* overflow-y: scroll; */
+}
+
+.activityRuleCont {
+  height: 70vh;
+  border-radius: 20rpx;
+  overflow-y: scroll;
+  background: #fff;
+  box-sizing: border-box;
+  padding: 20rpx 20rpx 40rpx;
+  line-height: 1.8;
+}
+
+.activityRuleCont_tit {
+  margin-bottom: 20rpx;
+}
+
+.activityRule image {
+  width: 216rpx;
+  height: 179rpx;
+  display: block;
+  margin: 20rpx auto;
+}
+
+.iconquxiao1 {
+  position: absolute;
+  right: -20rpx;
+  top: -50rpx;
+  z-index: 1001;
+}
+
+.cancal_btn {
+  background: #6c7df2;
+  padding: 20rpx;
+  margin: 30rpx 0;
+  border-radius: 50rpx;
+}
+
+.actionMask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1009;
+  box-sizing: border-box;
+}
+
+.bijia {
+  position: fixed;
+  top: 300rpx;
+  left: 10vw;
+  z-index: 99999;
+  background: #fff;
+  width: 80vw;
+  border-radius: 20rpx;
+  padding: 30rpx;
+  box-sizing: border-box;
+}
+
+.bijia button {
+  width: 200rpx;
+  line-height: 1.8;
+  margin-top: 20rpx;
+  background: #15b521;
+}
+
+.price_taobao {
+  margin: 30rpx 0 20rpx;
+}
+
+.price_taobao text {
+  margin-left: 20rpx;
+}
+
+.course_cont swiper-item {
+  overflow-y: auto;
+}
+
+.invitation {
+  padding: 10rpx 20rpx;
+  margin-bottom: 20rpx;
+  border-radius: 20rpx;
+  background: #fff;
+}
+
+.invitation .lineItem {
+  padding: 10rpx 0;
+}
+
+.invitate_btn {
+  color: #e18b42;
+  background: #fdf2e5;
+  padding: 5rpx 10rpx 5rpx 20rpx;
+  border-radius: 20rpx;
+}
+
+.invitate_btn:before, .invitate_btn:after {
+  border: none;
+}
+
+.invitate_btn text {
+  margin-left: 10rpx;
+}
+
+
+.shareTenantAction {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  /* background: #fff; */
+  z-index: 10002;
+  padding: 0 0 60rpx 0;
+  /* border-top-left-radius: 20rpx; *//* border-top-right-radius: 20rpx; */
+  height: 134rpx;
+}

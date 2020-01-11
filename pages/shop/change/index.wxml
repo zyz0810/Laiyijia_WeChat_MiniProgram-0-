@@ -1,0 +1,17 @@
+<!--pages/shop/change/index.wxml-->
+<wxs src="../../../wxs/imageCut.wxs" module="imageCut" />
+<view class='lineItem border_bottom' data-id="{{item.id}}" data-index='{{index}}' data-name='{{item.name}}' bindtap='choose' wx:for="{{shopList}}" wx:key="index">
+  <view class='left'>
+    <view class='circle tc'>
+      <!-- <text class='iconfont icondianzan clr_yellow'></text> -->
+      <image src="{{item.logo?imageCut(item.logo,11,11,sys):'/resources/images/noneimg.png'}}"></image>
+    </view>
+  </view>
+  <view class='center f16'>{{item.name}}</view>
+  <view class='right' wx:if="{{tenantIdNow==item.id}}">
+    <text class='iconfont icongou clr_yellow'></text>
+  </view>
+</view>
+<!-- <movable-area>
+  <movable-view class='f40 clr_white tc' direction="all" animation="{{animation}}" inertia="true" bindchange="onChange" x="{{leftValue}}" y="{{topValue}}" bindtap='goMarket'>+</movable-view>
+</movable-area> -->

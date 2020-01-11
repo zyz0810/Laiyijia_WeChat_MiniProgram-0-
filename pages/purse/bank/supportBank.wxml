@@ -1,0 +1,9 @@
+<view>
+  <view class='lineItem' wx:for="{{bankList}}" wx:key="{{item.id}}">
+    <view class='left'>
+      <image src='{{item.logo?item.logo:"/resources/images/noneimg.png"}}'></image>
+    </view>
+    <view class='center f14'>{{item.depositBank}}</view>
+    <view class='right'></view>
+  </view>
+</view>

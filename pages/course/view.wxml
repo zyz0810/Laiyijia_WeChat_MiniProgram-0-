@@ -1,0 +1,6 @@
+<!--pages/course/view.wxml-->
+<import src="../wxParse/wxParse.wxml"/>
+<!-- <view class='f18 tc title'>{{title}}</view> -->
+<view class="wxParse content">
+    <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
+  </view>

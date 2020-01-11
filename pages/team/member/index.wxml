@@ -1,0 +1,22 @@
+<!--pages/team/member/index.wxml-->
+<view class='information f16'>
+  <view class='lineItem border_bottom'>
+    <view class='left clr_mediumGray'>姓名</view>
+    <view class='center tr'>{{data.name}}</view>
+  </view>
+  <view class='lineItem border_bottom'>
+    <view class='left clr_mediumGray'>账号</view>
+    <view class='center tr'>{{data.account}}</view>
+  </view>
+</view>
+
+<view class='flex tc money'>
+  <view class='flex-item'>
+    <view class='f16 clr_mediumGray'>今日累计</view>
+    <view class='f25'>{{data.todayBrokerage}}</view>
+  </view>
+    <view class='flex-item'>
+    <view class='f16 clr_mediumGray'>总累计</view>
+    <view class='f25'>{{data.totalBrokerage}}</view>
+  </view>
+</view>

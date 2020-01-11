@@ -1,0 +1,96 @@
+/* pages/shop/examine/index.wxss */
+page{
+  box-sizing: border-box;
+  background: #fff;
+}
+.itemInput .itemright.map_btn{
+  width: auto;
+}
+.submit_btn{
+  margin: 50rpx 0;
+  width: 100%;
+}
+.submit_btn button{
+  width: 260rpx;
+  background: #bcbcbc;
+  border-radius: 50rpx;
+  /* line-height: 2.3; */
+  display: inline-block;
+  margin: 0 20rpx;
+}
+
+.uploadImg {
+  background: #fff;
+  width: 360rpx;
+  margin: 20rpx 0;
+}
+
+.uploadImg .flex-item {
+  text-align: center;
+  background: #d7d7d7;
+  width: 160rpx;
+  height: 160rpx;
+  margin-right: 20rpx;
+}
+.uploadImg .flex-item text{
+  line-height: 160rpx;
+}
+.uploadImg .flex-item image {
+  width: 160rpx;
+  height: 160rpx;
+}
+.map{
+  height:180rpx;
+}
+
+.map_btn text{
+  padding:  8rpx 30rpx;
+  border: 1px solid #ccc;
+  border-radius: 30rpx;
+}
+
+
+.top_bg{
+  width: 100%;
+}
+.top_bg image{
+  width: 100%;
+  height: 100rpx;
+}
+.state{
+  line-height: 2;
+}
+.state_btn{
+  display: inline-block;
+  padding: 0 20rpx;
+  background: #ff8a00;
+  border-radius: 30rpx;
+  margin-left: 20rpx;
+}
+
+.form{
+  width: 100%;
+  padding: 20rpx;
+  box-sizing: border-box;
+  display: block;
+}
+
+.shopAddress{
+  width: 100%;
+  height: 30px;
+  line-height: 1.5
+}
+.address{
+  line-height: 1.5
+}
+
+.address,.address .center{
+  /* justify-content:flex-start; */
+  align-items:flex-start;
+}
+.form .lineItem{
+  padding: 30rpx 2%;
+}
+.form .lineItem .left{
+  width: 160rpx;
+}

@@ -1,0 +1,20 @@
+<!--pages/login/code/index.wxml-->
+<view class='container'>
+  <view class='f22 tc title'>输入验证码</view>
+  <view class='f14 tc'>
+    <text class='clr_lightGray'>验证码已发送至：</text>
+    <text>{{receivePhone}}</text>
+  </view>
+  <view class="code f18" bindtap="beFocus">
+  <text>{{code[0]}}</text>
+  <text>{{code[1]}}</text>
+  <text>{{code[2]}}</text>
+  <text>{{code[3]}}</text>
+  <!-- <text>{{code[4]}}</text> -->
+  <!-- <text>{{code[5]}}</text> -->
+  <input type="text" focus="{{focus}}" bindinput="codeInput" value="{{code}}" maxlength="4" />
+</view>
+<view class="sendAgain f12 clr_lightGray" bindtap="sendAgain">
+  {{tips}}
+</view>
+</view>

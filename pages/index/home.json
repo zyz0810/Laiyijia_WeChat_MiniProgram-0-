@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "来一架商家版",
+  "navigationBarBackgroundColor": "#fff",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "tabber": "/component/tabber/tabber"
+  }
+}

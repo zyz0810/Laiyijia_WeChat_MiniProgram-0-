@@ -1,0 +1,27 @@
+<block wx:for="{{orderList}}" wx:key="id" wx:for-item="item">
+  <view class='orderList' bindtap='goOrderView' data-id="{{item.id}}">
+    <view class=' descOrder f14 shelfColor' wx:if="{{item.orderStatus=='待支付'}}">{{item.orderStatus}}
+      <text class='iconfont icon-icon'></text>
+    </view>
+    <view class='clr_mediumGray descOrder f14' wx:if="{{item.orderStatus=='已支付'}}">{{item.orderStatus}}
+      <text class='iconfont icon-icon'></text>
+    </view>
+    <view class='lineItem orderListItem border_bottom'>
+      <view class='left'>
+        <image src='{{item.masterMap?item.masterMap:"/resources/images/noneimg.png"}}' mode=''></image>
+      </view>
+      <view class='center'>
+        <view class='lineItem lineItem_access f14'>
+          <view class='left f16 overone tl' style='width:52vw;display:block'>{{item.name}}</view>
+          <view class='center'></view>
+        </view>
+        <view class='lineItem f14'>
+          <text>￥{{item.price}}</text>
+          <text>X{{item.count}}</text>
+        </view>
+      </view>
+    </view>
+    <view class='tr f16 payAmount'>支付金额：￥{{item.totalPrice}}</view>
+  </view>
+</block>
+<view class="tips" hidden="{{showtips}}">{{tips}}</view>

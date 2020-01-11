@@ -1,0 +1,26 @@
+/* pages/agreement/index.wxss */
+
+page {
+  padding: 0 20rpx;
+  background: #fff;
+  box-sizing: border-box;
+}
+
+.cont view {
+  text-indent: 2em;
+  margin-top: 20rpx;
+  line-height: 1.6;
+}
+
+.cont .intro {
+  text-indent: 3em;
+}
+.submit_btn{
+  padding-bottom: 50rpx;
+}
+.submit_btn button{
+  margin: 50rpx auto 0;
+  width: 90%;
+  background: #15b521;
+  border-radius: 50rpx;
+}

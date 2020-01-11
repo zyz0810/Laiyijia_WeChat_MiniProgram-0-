@@ -1,0 +1,194 @@
+<!--pages/order/list/index.wxml-->
+<!-- <view class='flex num'>
+  <view class='flex-item'>
+    <view class='f12'>今日订单（笔）</view>
+    <view class='f20 clr_red02 bold' style='padding-left:2vw;'>{{todayTradeStatistics.total}}</view>
+  </view>
+  <view class='flex-item'>
+    <view class='f12'>成交金额（元）</view>
+    <view class='f20 clr_red02 bold' style='padding-left:2vw;'>{{todayTradeStatistics.saleAmount}}</view>
+  </view>
+</view> -->
+<header background-color="#fff" color="#000" showNav="{{true}}" back="1">
+  <picker bindchange="guideChange" range-key='name' range="{{deliveryCenterList}}" wx:if="{{deliveryCenterList.length>0}}">
+    {{storeName?storeName:deliveryCenterList[0].name}}
+  </picker>
+  <view wx:if="{{deliveryCenterList.length==0}}">
+    {{storeName}}
+  </view>
+</header>
+<view class='tapWrapp flex'>
+  <view class='flex-item tc' style='flex:1'>
+    <picker mode="date" value="{{begin_year}}-{{begin_month}}-{{begin_day}}" start="2015-09-01" end="{{nowyear}}-{{nowmonth}}-{{nowdate}}" fields="day" bindchange="bindBeginDateChange">
+      <view class="picker f14">
+        开始日期
+      </view>
+      <view class="picker f14">
+        {{begin_year}}.{{begin_month}}.{{begin_day}}
+      </view>
+    </picker>
+  </view>
+  <view class='orderTab tc f12 flex-item' style="flex:2;visibility:hidden;">
+    <text class="{{currentOrderTab==0 ? 'active' : ''}}" data-current="0" bindtap="swichOrderTab" data-otype="myOrder">我的订单</text>
+    <text class="{{currentOrderTab==1 ? 'active' : ''}}" data-current="1" bindtap="swichOrderTab" data-otype="allOrder">全部订单</text>
+  </view>
+  <view class='flex-item tc' style='flex:1'>
+    <picker mode="date" value="{{end_year}}-{{end_month}}-{{end_day}}" start="2015-09-01" end="{{nowyear}}-{{nowmonth}}-{{nowdate}}" fields="day" bindchange="bindEndDateChange">
+      <view class="picker f14">
+        结束日期
+      </view>
+      <view class="picker f14">
+        {{end_year}}.{{end_month}}.{{end_day}}
+      </view>
+    </picker>
+  </view>
+</view>
+<view class='page'>
+  <view class="swiper-tab top f14">
+    <view class="swiper-tab-list {{currentTab==0 ? ' f16 bold' : ''}}" data-type="ALL" data-current="0" bindtap="swichNav">
+      <view>全部订单</view>
+      <view class='border' style='background:{{currentTab==0 ?  mainColor: "transparent"}}'></view>
+    </view>
+
+    <view class="swiper-tab-list {{currentTab==1 ? ' f16 bold' : ''}}" data-type="SHIPPED" data-current="1" bindtap="swichNav">
+      <view>已发货</view>
+      <view class='border' style='background:{{currentTab==1 ?  mainColor: "transparent"}}'></view>
+    </view>
+
+    <view class="swiper-tab-list {{currentTab==2 ? ' f16 bold' : ''}}" data-type="COMPLETED" data-current="2" bindtap="swichNav">
+      <view>已完成</view>
+      <view class='border' style='background:{{currentTab==2 ?  mainColor: "transparent"}}'></view>
+    </view>
+  </view>
+  <swiper current="{{currentTab}}" bindtouchstart='touchstart' bindtouchend='touchend' bindtouchmove='touchmove' class="swiper-box" duration="0" style="height:{{winHeight - 179}}px;" bindchange="bindChange">
+    <swiper-item>
+      <scroll-view class="scrollWrap" scroll-y="{{!showModalMask}}" bindscroll="scroll" bindscrolltolower="lower" bindscrolltoupper="upper">
+        <block wx:for="{{ALL}}" wx:key="id" wx:for-index="bindex">
+          <template is="orderList" data="{{item:item,mainColor,bindex:bindex,type:'ALL'}}"></template>
+        </block>
+        <view class='order_null' wx:if="{{ALL.length == 0}}">
+          <image src='https://cdn.laiyijia.com/upload/image/201905/4fe04015-24bf-44f3-be87-35ea14f3a949.png'></image>
+        </view>
+        <view class="tips f12" wx:if="{{ALL.length != 0}}">{{ALLTips}}</view>
+      </scroll-view>
+    </swiper-item>
+    <swiper-item>
+      <scroll-view class="scrollWrap" scroll-y="{{!showModalMask}}" bindscroll="scroll" bindscrolltolower="lower" bindscrolltoupper="upper">
+        <block wx:for="{{SHIPPED}}" wx:key="id" wx:for-index="bindex">
+          <template is="orderList" data="{{item:item,mainColor,bindex:bindex,type:'SHIPPED'}}"></template>
+        </block>
+        <view class='order_null' wx:if="{{SHIPPED.length == 0}}">
+          <image src='http://cdn.laiyijia.com/upload/image/201905/4fe04015-24bf-44f3-be87-35ea14f3a949.png'></image>
+        </view>
+        <view class="tips f12" wx:if="{{SHIPPED.length != 0}}">{{SHIPPEDTips}}</view>
+      </scroll-view>
+    </swiper-item>
+
+    <swiper-item>
+      <scroll-view class="scrollWrap" scroll-y="{{!showModalMask}}" bindscroll="scroll" bindscrolltolower="lower" bindscrolltoupper="upper">
+        <block wx:for="{{COMPLETED}}" wx:key="id" wx:for-index="bindex">
+          <template is="orderList" data="{{item:item,mainColor,bindex:bindex,type:'COMPLETED'}}"></template>
+        </block>
+        <view class='order_null' wx:if="{{COMPLETED.length == 0}}">
+          <image src='http://cdn.laiyijia.com/upload/image/201905/4fe04015-24bf-44f3-be87-35ea14f3a949.png'></image>
+        </view>
+        <view class="tips f12" wx:if="{{COMPLETED.length != 0}}">{{COMPLETEDTips}}</view>
+      </scroll-view>
+    </swiper-item>
+
+  </swiper>
+</view>
+
+<view class='bottomSaleInfo flex f14 tc'>
+  <!-- <view class='bottomSaleInfo flex f14 tc' wx:if="{{currentTab==0}}"> -->
+  <view class='flex-item'>订单总数：{{totalTimes}}</view>
+  <view class='flex-item'>销售额：{{totalAmount}}元</view>
+  <view class='flex-item'>分润：{{totalRebate}}元</view>
+</view>
+<template name="orderList">
+  <view class="ordersWrap">
+    <!-- <view class="flexC title">
+      <image src="{{item.avatar?item.avatar:'/resources/user.png'}}"></image>
+      <view class="name f16 clr_mediumGray">{{item.nickName}}</view>
+      <view class="orderType f14 clr_lightGray" style='color:{{mainColor}}'>{{item.orderStatus}}</view>
+    </view> -->
+    <view class="flexC title" bindtap='goDetail' data-id="{{item.tradeId}}">
+      <view class='f14 clr_lightGray'>订单编号：{{item.tradeSn}}</view>
+      <view class="orderType f14 clr_lightGray" style='color:{{mainColor}}'>{{item.orderStatus}}</view>
+    </view>
+    <!-- <navigator url="./orderDetails/orderDetails?id={{item.id}}"> -->
+    <block wx:for="{{item.productViews}}" wx:key="id" wx:for-item="orderItem" wx:if="{{item.productViews.length<3}}">
+      <view class="flexC details" bindtap='goDetail' data-id="{{item.tradeId}}">
+        <view class="orderImg">
+          <image src="{{orderItem.thumbnail?orderItem.thumbnail:'/resources/user.png'}}"></image>
+        </view>
+        <view class="shopInfo">
+          <view class="shopName f14 clr_lightGray overtwo">{{orderItem.name}}</view>
+          <view class="orderNumber f14 clr_lightGray overtwo">{{orderItem.productName}}</view>
+          <view class="shopPrice f14 lineItem" style='width:98%;'>
+            <view class='center bold'>￥ {{orderItem.price}}</view>
+            <view class='right clr_lightGray'>x{{orderItem.quantity}}</view>
+          </view>
+        </view>
+
+      </view>
+    </block>
+    <view wx:if="{{item.productViews.length>=3}}" class="detailsLineMore" bindtap='goDetail' data-id="{{item.tradeId}}">
+      <block wx:for="{{item.productViews}}" wx:key="id" wx:for-item="orderItem" wx:if="{{item.productViews.length>=3}}">
+        <view class="orderImg" wx:if="{{index<3}}">
+          <image src="{{orderItem.thumbnail?orderItem.thumbnail:'/resources/user.png'}}"></image>
+          <view class='productCount f14'>{{orderItem.quantity}}</view>
+        </view>
+        <!-- <view class="shopInfo">
+            <view class="shopPrice f14 lineItem" style='width:100%;'>
+              <view class='right clr_lightGray'>x{{orderItem.quantity}}</view>
+            </view>
+          </view> -->
+      </block>
+    </view>
+    <view class=' f14 clr_lightGray orderCreateInfo padding2' bindtap='goDetail' data-id="{{item.tradeId}}">
+      <!-- <view>订单编号：{{item.tradeSn}}</view> -->
+      <view>下单时间：{{item.createDate}}</view>
+    </view>
+    <!-- </navigator> -->
+    <!-- <view class="orderTotal borderA f16 flexC">
+      <view class='clr_mediumGray f14'>共{{item.count}}件商品</view>
+      <view class='f16'>总计￥{{item.tradeAmount}}</view>
+    </view> -->
+    <!-- <view class='order_num f12 clr_lightGray' wx:if='{{item.show}}'>
+      <view>订单编号：{{item.tradeSn}}</view>
+      <view>下单时间：{{item.createDate}}</view>
+    </view> -->
+
+    <view class='intro lineItem'>
+      <!-- <view class='left f12 clr_lightGray' data-id='{{bindex}}' data-type="{{type}}" bindtap='showIntro'>订单信息
+        <text class='iconfont iconxiajiantou' wx:if='{{!item.show}}'></text>
+        <text class='iconfont iconshangjiantou' wx:if='{{item.show}}'></text>
+      </view> -->
+      <view class="orderTotal borderA" bindtap='goDetail' data-id="{{item.tradeId}}">
+        <view class='clr_mediumGray f14' style='margin-left:0;'>共{{item.count}}件商品 总计￥{{item.tradeAmount}}</view>
+      </view>
+      <view class='center f16 bold500 tr' bindtap='clickBonus' data-index="{{bindex}}">
+        <view class='f16'>
+          <text wx:if="{{item.orderStatusEnum=='COMPLETED'}}">该订单实际收益</text>
+          <text wx:if="{{item.orderStatusEnum!='COMPLETED'}}">该订单预估收益</text>
+          <text class='clr_red02'>￥{{item.brokerage}}</text>
+        </view>
+        <view>
+          <text class='f12 clr_lightGray' wx:if="{{!item.showBonusDetail}}">(点击查看收益明细)</text>
+          <text class='f12 clr_lightGray' wx:if="{{item.showBonusDetail}}">(点击关闭)</text>
+        </view>
+      </view>
+    </view>
+    <view class='defaultMask' wx:if="{{item.showBonusDetail}}" catchtouchmove></view>
+    <view class="tableWrap tc" wx:if="{{item.showBonusDetail}}" wx:key="*this">
+      <view class='clr_red f20 bold'>收益明细</view>
+      <block wx:for="{{item.rebate}}" wx:key="*this">
+        <view class='clr_meiumGray f14'>{{item.description}}：{{item.brokerage}}元</view>
+      </block>
+      <view class='closeBtn f14' bindtap='clickBonus' data-index="{{bindex}}">
+        <text>关闭</text>
+      </view>
+    </view>
+  </view>
+</template>

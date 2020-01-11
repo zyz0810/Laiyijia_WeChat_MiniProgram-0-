@@ -1,0 +1,141 @@
+<view class="page">
+  <shadow-component />
+  <view class="title f16">交易状态</view>
+  <view class="progress">
+    <block wx:for="{{details.orderLogs}}" wx:key="operator">
+      <view class="lineItem">
+        <view class="left">
+          <text class='progressDot iconfont iconxiangshangjiantouquan clr_orange' style='color:{{mainColor}}'></text>
+          <view wx:if="{{index != 0}}" class="progressLine" style='background:{{mainColor}}'></view>
+        </view>
+        <view class="center">
+          <view class="f14 proTitle">{{item.content}}</view>
+          <view class="f12">{{item.content}}</view>
+        </view>
+        <view class="right f12">{{item.createDate}}</view>
+      </view>
+    </block>
+  </view>
+  <view class="title f16">订单消息</view>
+  <view class="orderMsg f14">
+    <view class="lineItem border_none">
+      <view class="left">支付方式</view>
+      <view class="right">{{details.paymentMethodName}}</view>
+    </view>
+    <view class="lineItem border_none">
+      <view class="left">配送方式</view>
+      <view class="right">{{details.shippingMethodName}}</view>
+    </view>
+    <view class="lineItem">
+      <view class="left">订单号</view>
+      <view class="right">{{details.sn}}</view>
+    </view>
+    <view class="lineItem" wx:if="{{details.shippings}}">
+      <view class="left">快递单号</view>
+      <view class="right">{{details.shippings.deliveryCorp||''}}{{details.shippings.trackingNo||''}}</view>
+    </view>
+    <view class="lineItem border_none">
+      <view class="left">销售门店</view>
+      <view class="right">{{details.deliveryCenter.name}}
+      </view>
+    </view>
+    <view class="lineItem border_none">
+      <view class="left">门店地址</view>
+      <view class="right">{{details.deliveryCenter.areaName}}{{details.deliveryCenter.address}}
+      </view>
+    </view>
+    <view wx:if="{{details.shippingMethod=='TPL'}}">
+      <view class="lineItem border_none">
+        <view class="classname">收货人：{{details.consignee}}({{details.phone}})</view>
+      </view>
+      <view class="lineItem ">
+        <view class="classname">收货地址：{{details.areaName}} {{details.address}}</view>
+      </view>
+      <view class="lineItem ">
+        <view class="classname">买家留言：{{details.memo == ' '||!details.memo?'无':details.memo}}</view>
+      </view>
+    </view>
+    <view wx:if="{{details.shippingMethod=='PRIVY'}}">
+      <view class="lineItem border_none">
+        <view class="classname">门店电话：{{details.deliveryCenter.mobile}}</view>
+      </view>
+      <view class="lineItem ">
+        <view class="classname">买家留言：{{details.memo == ' '||!details.memo?'无':details.memo}}</view>
+      </view>
+    </view>
+    <view wx:if="{{details.shippingMethod=='F2F'}}">
+      <view class="lineItem border_none">
+        <view class="classname">提货人：{{details.consignee}}({{details.phone}})</view>
+      </view>
+      <view class="lineItem ">
+        <view class="classname">提货地址：{{details.areaName}} {{details.deliveryAddress}}</view>
+      </view>
+      <view class="pickUpcodeUrl tc">
+        <image src="{{pickUpcodeUrl}}"></image>
+        <text class="bold">提货码：{{details.pickUpCode}}</text>
+      </view>
+      <view class="lineItem">
+        <view class="classname">买家留言：{{details.memo == ' '||!details.memo?'无':details.memo}}</view>
+      </view>
+    </view>
+  </view>
+  <view class="title f16">商品信息</view>
+  <view class="shopMsg f14">
+    <view class="shopName lineItem ">
+      <view class="left">
+        <text class="iconfont icon-shangjia clr_orange" style='color:{{mainColor}}'></text>
+      </view>
+      <view class="center">
+        {{details.tenantName}}
+      </view>
+      <view class="right"></view>
+    </view>
+    <block wx:for="{{details.orderItems}}" wx:key="id">
+      <view class="shopDetails">
+        <view class="lineItem">
+          <view class="left">
+            <image src="{{item.thumbnail?item.thumbnail:'/resources/images/share/shareTopBg.jpg'}}"></image>
+          </view>
+          <view class="center">
+            <view class="overthree">{{item.name}}</view>
+            <view>￥{{item.price}}</view>
+            <!-- <view class='clr_orange'>分润：￥{{item.commission?item.commission:0}}</view> -->
+          </view>
+          <view class="right">
+            x{{item.quantity}}
+          </view>
+        </view>
+      </view>
+
+    </block>
+    <view class="total">
+      <view class="lineItem">
+        <view class="right">
+          <view>小计：
+            <text>￥{{details.price}}</text>
+          </view>
+          <view>运费：
+            <text>￥{{details.freight}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="lineItem title border_none f16" wx:if="{{details.couponDiscount}}">
+    <view class="left">
+      <text class="iconfont icon-round_quan_fill clr_purple f18"></text>
+    </view>
+    <view class="center">
+      店铺优惠券
+    </view>
+    <view class="right">
+      -￥{{details.couponDiscount}}
+    </view>
+  </view>
+  <view class="op">
+    <view>
+      实付款：
+      <text class="clr_orange" style='color:{{mainColor}}'>￥{{details.amount}}</text>
+    </view>
+  </view>
+</view>

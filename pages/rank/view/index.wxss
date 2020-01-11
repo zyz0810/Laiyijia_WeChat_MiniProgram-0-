@@ -1,0 +1,311 @@
+/* pages/home/home.wxss */
+
+page {
+  background: #fff;
+}
+
+.newsWrap {
+  border: 1px solid #ececec;
+  width: 95%;
+  margin: 25rpx auto 0;
+  background: #fff;
+  border-radius: 10rpx;
+  padding: 0;
+}
+
+.newsWrap swiper {
+  height: 60rpx;
+}
+
+.newsWrap .flex_item {
+  line-height: 60rpx;
+}
+
+.newsWrap .titleLeft {
+  margin-right: 0;
+  margin-left: 15rpx;
+}
+
+/* .newsWrap .titleLeft image {
+  width: 30rpx;
+  height: 30rpx;
+  margin-bottom: 8rpx;
+  display: inline-block;
+  vertical-align: middle;
+} */
+.newsWrap .titleLeft .iconfont {
+  display: inline-block;
+  margin-top: 6rpx;
+}
+.bonus {
+  border-bottom: 10rpx solid #f4f4f4;
+}
+
+.bonus .rule {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: center;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 20rpx;
+}
+
+/* .bonus .rule image {
+  vertical-align: middle;
+  padding-right: 10rpx;
+} */
+.bonus .rule .iconfont {
+  vertical-align: middle;
+  padding-right: 6rpx;
+  /* padding-top: 8rpx; */
+}
+
+.bonus .detail {
+  width: 650rpx;
+  height: 116rpx;
+  background: #e7cd99;
+  margin: 0 auto;
+  border-radius: 116rpx;
+}
+
+.bonus .detail .image image {
+  width: 175rpx;
+  height: 122rpx;
+}
+
+.bonus .detail .amount {
+  line-height: 116rpx;
+}
+
+.bonus .time {
+  width: 650rpx;
+  height: 15rpx;
+  background: #c1c1c1;
+  border-radius: 15rpx;
+  margin: 40rpx auto 20rpx;
+  position: relative;
+}
+
+.bonus .time>view {
+  overflow: hidden;
+  width: 50%;
+  position: absolute;
+  top: 0;
+  height: 15rpx;
+  z-index: 100;
+}
+
+.bonus .time>view image {
+  display: block;
+}
+
+.bonus .time .position {
+  width: 16rpx;
+  height: 26rpx;
+  position: absolute;
+  top: -25rpx;
+}
+
+.shelvesRankTitle {
+  padding: 30rpx 0 0 50rpx;
+}
+
+.shelvesRank .title {
+  position: relative;
+}
+
+.shelvesRank .title::after {
+  position: absolute;
+  width: 10rpx;
+  display: block;
+  height: 27rpx;
+  background: #4aa4f0;
+  left: -20rpx;
+  top: 10rpx;
+  content: '';
+}
+
+.shelvesRank .filter .active {
+  font-weight: 600;
+  position: relative;
+}
+
+.shelvesRank .filter .active::after {
+  display: block;
+  position: absolute;
+  bottom: -10rpx;
+  width: 80rpx;
+  left: 25%;
+  content: '';
+  height: 8rpx;
+  background: #4aa4f0;
+}
+
+.shelvesRank .line {
+  width: 690rpx;
+  height: 1px;
+  background: #eee;
+  margin: 0 auto 20rpx;
+}
+
+.table_normal {
+  border: 0px solid darkgray;
+}
+
+.table_normal .tab_tr {
+  display: flex;
+  width: 100%;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.table_normal .td {
+  width: 20%;
+  justify-content: flex-start;
+  text-align: flex-start;
+  /* flex: 1; */
+  padding: 2% 0 2% 2%;
+}
+
+.table_normal .bg-w {
+  color: #666;
+}
+
+.table_normal .th {
+  width: 20%;
+  justify-content: flex-start;
+  display: flex;
+  height: 1.5rem;
+  align-items: flex-start;
+  padding: 0 0 0 2%;
+}
+
+.tab_tr .rank {
+  position: relative;
+}
+
+.tab_tr .rank image {
+  width: 10rpx;
+  height: 16rpx;
+  position: relative;
+  margin-right: 4rpx;
+}
+
+.rankChange {
+  position: absolute;
+  right: 0;
+  top: 20rpx;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: center;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.rankChange image {
+  vertical-align: middle;
+}
+
+.rankList {
+  padding-bottom: 60rpx;
+}
+
+.selfList {
+  position: fixed;
+  bottom: 0;
+  background: #fff0e9;
+  z-index: 100;
+  width: 100% !important;
+  left: 0%;
+}
+
+.aon {
+  position: absolute;
+  white-space: nowrap; /* 防止向下换行*/
+}
+
+.doommview {
+  z-index: 3;
+  height: 430rpx;
+  width: 750rpx;
+  overflow-x: hidden;
+  position: absolute;
+}
+
+/**定义从右边向左边的移动的动画**/
+
+@keyframes first {
+  from {
+    left: 100%;
+  }
+
+  to {
+    left: -100%;
+  }
+}
+
+.activityRule {
+  position: fixed;
+  top: 16vh;
+  background: #fff;
+  width: 600rpx;
+  height: 65vh;
+  left: 75rpx;
+  z-index: 1000;
+  border-radius:10rpx;
+  /* overflow-y: scroll; */
+}
+
+.activityRuleCont {
+  height: 65vh;
+  overflow-y: auto;
+}
+
+.activityRule image {
+  width: 100%;
+}
+
+.iconcancel {
+  position: absolute;
+  right: -50rpx;
+  top: -50rpx;
+  z-index: 1001;
+}
+
+.actionMask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  box-sizing: border-box;
+}
+/* 南极人模块样式 */
+.myDetail{
+  padding: 10rpx 25px 20rpx;
+  margin-top: 10rpx;
+  border-top:10rpx solid #f4f4f4;
+  position: relative;
+}
+.rule_nanjiren{
+  position: absolute;
+  top: -10rpx;
+  right: 0;
+  z-index: 999;
+}
+.myDetail .lineItem{
+  padding: 8rpx 2%;
+}
+.sum_rule{
+  padding: 20rpx 25px;
+  border-top:10rpx solid #f4f4f4;
+}
+.sum_rule view{
+  padding: 5rpx 0;
+}
+.time_num text{
+  /* width: 100%; */
+  display: inline-block;
+}

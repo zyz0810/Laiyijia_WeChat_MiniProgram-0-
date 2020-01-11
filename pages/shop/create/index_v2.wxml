@@ -1,0 +1,33 @@
+<!--pages/shop/create/index.wxml-->
+<view class='top_bg'>
+  <image src='http://cdn.laiyijia.com/upload/image/201910/a32d1998-c178-4a79-96a7-48ea8a9e1393.jpg'></image>
+</view>
+
+<form class='form'>
+  <view class='f18 bold tc'>注册资料</view>
+  <view class='f12 clr_lightGray tc tip'>请谨慎填写基本资料，注册后基本资料无法更改</view>
+  <view class='lineItem f14 border info'>
+    <view class='left f14'>联系人：</view>
+    <view class='center'>
+      <input name="input" type='text' placeholder="请输入店铺主姓名 " placeholder-class='clr_gray01' value='{{shopUser}}' bindinput='user' />
+    </view>
+  </view>
+  <view class='lineItem f14 border info'>
+    <view class='left f14'>店铺名：</view>
+    <view class='center'>
+      <input name="input" type='text' placeholder="请输入店铺名称" placeholder-class='clr_gray01' value='{{shopName}}' bindinput='name' />
+    </view>
+  </view>
+  <view class='f12 agreement lineItem'>
+    <view class='center'>
+      <checkbox-group bindchange="checkboxChange" class="tc">
+        <label class="checkbox">
+          <checkbox value='agree' checked="{{checked}}" />已阅读并同意
+        </label>
+        <text class='clr_blue03' bindtap='goAgreement'>《服务协议》</text>
+      </checkbox-group>
+      
+    </view>
+  </view>
+  <button class='formButton f16 clr_white submit_btn' bindtap='change'>确认注册</button>
+</form>

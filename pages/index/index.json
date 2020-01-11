@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "来一架",
+  "navigationBarBackgroundColor": "#FEC965",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "tabber": "/component/tabber/tabber"
+  }
+}

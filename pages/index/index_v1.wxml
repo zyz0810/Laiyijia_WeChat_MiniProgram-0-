@@ -1,0 +1,203 @@
+<!--pages/index/index.wxml-->
+<view class='{{nav?"preventTouchMove":""}}'>
+  <view class='top'>
+    <view class='lineItem info'>
+      <!-- <view class='left'>
+        <text class='f10 clr_white rank_tan'>您当前的排名下降3名，当前排名为为8名</text>
+      </view> -->
+      <view class='right user' bindtap='showNav'>
+        <text class='iconfont iconren12 f30 clr_white'></text>
+      </view>
+    </view>
+    <view class='flex f14 bold tab'>
+      <view class='flex-item tr {{currentTab == 0?"active":"clr_white"}}' data-id='0' bindtap='tabClick'>
+        <text>累计收入</text>
+      </view>
+      <view class='flex-item clr_white {{currentTab == 1?"active":"clr_white"}}' data-id='1' bindtap='tabClick'>
+        <text>今日收入</text>
+      </view>
+    </view>
+    <view class='cont tc'>
+      <view class='f30 clr_white bold moneyTotal' wx:if='{{member==true && currentTab == 0}}'>￥{{totalCensus.income}}</view>
+      <view class='f30 clr_white bold moneyTotal' wx:if='{{member==true && currentTab == 1}}'>￥{{todayCensus.income}}</view>
+      <view class='f30 clr_white bold moneyTotal' wx:if='{{!member}}'>￥00.00</view>
+      <view class='flex clr_white'>
+        <view class='flex-item trade_num' bindtap='goOrder'>
+          <view class='f14'>交易订单</view>
+          <view class='f20' wx:if='{{member==true && currentTab == 0}}'>{{totalCensus.totalTimes}}笔</view>
+          <view class='f20' wx:if='{{member==true && currentTab == 1}}'>{{todayCensus.totalTimes}}笔</view>
+          <view class='f20' wx:if='{{!member}}'>0笔</view>
+        </view>
+        <view class='flex-item rank_num' bindtap='member'>
+          <view class='f14'>当前排名</view>
+          <view class='f20' wx:if='{{member && rankData.activityStatus=="UNDERWAY"}}'>{{rankData.ranking}}名
+            <!-- <text class='iconfont iconzhixiangshangshangjiantou f18 clr_red bold'></text> -->
+          </view>
+          <!-- <view class='f20' wx:if='{{member && !rise && rankData.activityStatus=="UNDERWAY"}}'>{{rankData.ranking}}名
+            <text class='iconfont iconxiajiantou- f18 clr_red bold'></text>
+          </view> -->
+          <view class='f20' wx:if='{{!member || rankData.activityStatus=="FINISHED"}}'>--名</view>
+        </view>
+      </view>
+      <view class='flex money'>
+        <view class='flex-item' bindtap='goOrder'>
+          <view class='lineItem border_bottom name'>
+            <view class='left'>
+              <text class='iconfont iconjine clr_yellow f30'></text>
+            </view>
+            <view class='center f14 clr_gold02' wx:if='{{currentTab == 0}}'>累计销售额</view>
+            <view class='center f14 clr_gold02' wx:if='{{currentTab == 1}}'>今日销售额</view>
+            <view class='right'>
+              <text class='iconfont iconarrow-right-copy-copy f12 clr_gold02'></text>
+            </view>
+          </view>
+          <view class='f25 clr_mediumGray bold' wx:if='{{member && currentTab == 0}}'>￥{{totalCensus.totalAmount}}</view>
+          <view class='f25 clr_mediumGray bold' wx:if='{{member && currentTab == 1}}'>￥{{todayCensus.totalAmount}}</view>
+          <view class='f25 clr_mediumGray bold' wx:if='{{!member}}'>￥00.00</view>
+        </view>
+        <view class='flex-item' bindtap='goRank'>
+          <view class='lineItem border_bottom name'>
+            <view class='left'>
+              <text class='iconfont iconqianbao clr_yellow f30'></text>
+            </view>
+            <view class='center f14 clr_gold02'>预计奖励</view>
+            <view class='right'>
+              <text class='iconfont iconarrow-right-copy-copy f12 clr_gold02'></text>
+            </view>
+          </view>
+          <view class='f25 clr_mediumGray bold' wx:if='{{member && rankData.activityStatus=="UNDERWAY"}}'>￥{{rankData.expectAmount}}</view>
+          <view class='f25 clr_mediumGray bold' wx:if='{{member && rankData.activityStatus=="FINISHED"}}'>--</view>
+          <view class='f25 clr_mediumGray bold' wx:if='{{!member}}'>￥00.00</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class='flex menu tc'>
+    <view class='flex-item f14 clr_white bold' bindtap='shelfSelf'>我的货架</view>
+    <view class='flex-item f14 clr_white bold' bindtap='shelfMarket'>加盟品牌</view>
+    <view class='flex-item f14 clr_white bold' bindtap='shelfRank'>武道大会</view>
+  </view>
+  <view class='ad' wx:if='{{!member}}'>
+    <image src='http://cdn.laiyijia.com/upload/image/201802/80a591ef-9fa1-4c8a-b519-c4e03c2650c7.jpg@1080w_1l'></image>
+    <!-- <view class='goCreate f16 bold tc' bindtap='goCreate'>来一架</view> -->
+  </view>
+  <view class='rankTit' wx:if='{{member}}'>
+    <view class='lineItem'>
+      <view class='center f16 bold rankTitle'>{{rankData.shelvesIncentiveViewDTO.tenantName?rankData.shelvesIncentiveViewDTO.tenantName:'--'}}</view>
+      <view class='right tr'>
+        <view class='lineItem'>
+          <view class='left jackpot'>
+            <image src='/resources/images/home/award.png'></image>
+          </view>
+          <view class='center f13 clr_gold02 txt'>累计奖励</view>
+          <view class='right f13 clr_gold02'>￥{{rankData.shelvesIncentiveViewDTO.jackpot?rankData.shelvesIncentiveViewDTO.jackpot:'--'}}元</view>
+        </view>
+      </view>
+    </view>
+    <view class='flex f12 clr_gold02 timeStapFlex'>
+      <view class='flex-item'>{{rankData.shelvesIncentiveViewDTO.activityName}}
+      </view>
+      <view class='flex-item timeStap tr' wx:if="{{rankData.activityStatus!='FINISHED'}}">
+        (倒计时：
+        <view class='clr_lightGray clr_red'>
+          <block wx:if="{{timeStap.countDownDay>0}}">{{timeStap.countDownDay}}
+            <text class='boldnone f12'>天</text>
+          </block>{{timeStap.countDownHour}}时{{timeStap.countDownMinute}}分{{timeStap.countDownSecond}}秒
+        </view>)
+      </view>
+      <view class='flex-item timeStap tr' wx:if="{{rankData.activityStatus=='FINISHED'}}">
+        活动已结束
+      </view>
+    </view>
+  </view>
+  <view class="table_normal" wx:if='{{member && rankingList.length!=0}}'>
+    <view class="tab_tr bg-w  f14" style='padding-top:20rpx;'>
+      <view class="th" style='width:20%;'>排名</view>
+      <!-- <view class="th" style='width:10%;'></view> -->
+      <view class="th" style='width:42%;padding-left:1%;'>门店</view>
+      <view class="th" style='width:18%;'>销售额</view>
+      <view class="th" style='width:20%;'>预计奖励</view>
+    </view>
+    <view class='rankList' style='position:relative;'>
+      <image mode='widthFix' wx:if="{{rankData.activityStatus=='FINISHED'}}" src='https://cdn.laiyijia.com/upload/image/201905/498fb8bd-bd3f-4c52-a132-9d1f8c982722.png' style='position:absolute;top:-20rpx;width:250rpx;left:250rpx;opacity:0.4;'></image>
+      <block wx:for="{{rankingList.rankingList}}" wx:key="{{item.ranking}}">
+        <view class="tab_tr f12 ">
+          <view class="td clr_title overone rank" style='width:20%;position: relative'>
+            <text class='iconfont iconwangguan f14 {{index==0?"clr_red":""}} {{index==1?"clr_orange02":""}} {{index==2?"clr_yellow":""}} crown' wx:if="{{index==0 || index==1 || index==2}}"></text> {{index+1}}.{{item.username}}
+          </view>
+          <!-- <view class='td' style='width:10%;'>
+
+            <view wx:if="{{item.numRank>0}}" class="f9 clr_lightGray rankChange">
+              <image src='/resources/images/rank/rank_up.png'></image>{{item.numRank}}
+            </view>
+            <view wx:if="{{item.numRank<0}}" class="f9 clr_lightGray rankChange">
+              <image src='/resources/images/rank/rank_down.png'></image>{{item.numRank*-1}}
+            </view>
+            <view wx:if="{{item.numRank==0}}" class="f9 clr_lightGray rankChange">
+              <image src='/resources/images/rank/rank_equal.png'></image>{{item.numRank}}
+            </view>
+          </view> -->
+          <view class="td clr_title overone" style='width:42%;padding-left:1%;'>{{item.shortName}}</view>
+          <view class="td clr_title overone" style='width:18%;'>{{item.oneAmount}}</view>
+          <view class="td clr_title overone bold" style='width:20%;'>{{item.predictBonus}}元</view>
+        </view>
+      </block>
+    </view>
+    <view class='more f12 clr_lightGray tc' bindtap='showMoreRank' wx:if="{{showMoreRank}}">查看更多
+      <text class='iconfont iconxiajiantou'></text>
+    </view>
+    <!-- <view class="tab_tr f12 selfList" wx:if="{{rankshoperSelf}}">
+      <view class="td clr_title overone rank" style='width:22%;'>{{rankshoperSelf.ranking}}.{{rankshoperSelf.username}}
+      </view>
+      <view class="td clr_title overone" style='width:42%;'>{{rankshoperSelf.shortName}}</view>
+      <view class="td clr_title overone" style='width:18%;'>{{toFixed(rankshoperSelf.oneAmount)}}</view>
+      <view class="td clr_title overone bold" style='width:18%;'>{{toFixed(rankshoperSelf.predictBonus)}}元</view>
+    </view> -->
+  </view>
+  <view class='tc padding2 f16 bold' wx:if="{{rankingList.length==0}}">当前暂无销售激励排名活动</view>
+</view>
+<view class='purse f15 bold' bindtap='goPurse'>钱包</view>
+<!-- 隐藏的导航 -->
+<view class='mask' wx:if="{{nav}}" bindtap='nav_toggle' catchtouchmove></view>
+<view class='nav tc {{nav?"nav_toggle":""}}'>
+  <view class='headImg'>
+    <open-data type="userAvatarUrl" style="overflow: hidden;" class="image"></open-data>
+  </view>
+  <open-data type="userNickName" class="userName overone f14"></open-data>
+  <view class='f14 clr_white bold nav_item' bindtap='changeShop'>切换品牌</view>
+  <view class='f14 clr_white bold nav_item' bindtap='myCard'>我的银行卡</view>
+  <!-- <view class='f14 clr_white bold nav_item' bindtap='addTeamer'>添加员工</view> -->
+  <!-- <view class='f14 clr_white bold nav_item bg_red' bindtap='inviteFriend'>邀请好友赚钱</view> -->
+  <button class='f14 clr_white bold nav_item bg_red' open-type='getUserInfo' bindgetuserinfo="inviteFriend" style='line-height:1.5;'>邀请好友赚钱</button>
+  <view class='f14 clr_white bold nav_item signOut' bindtap='signOut'>退出登录</view>
+
+</view>
+
+<view class='table_normal selfRank' wx:if="{{member && rankingList.ranking}}">
+  <view class="tab_tr f12 selfList">
+    <view class="td clr_title overone rank" style='width:20%;'>第{{rankingList.ranking.ranking}}名
+    </view>
+    <!-- <view class='td' style='width:10%;'>
+      <view wx:if="{{item.numRank>0}}" class="f9 rankChange">
+        <image src='/resources/images/rank/rank_up.png'></image>{{rankingList.ranking.numRank}}
+      </view>
+      <view class="f9 clr_lightGray rankChange">
+        <image src='/resources/images/rank/rank_down.png'></image>{{-2*-1}}
+      </view>
+    </view> -->
+    <view class="td clr_title overone" style='width:42%;padding-left:1%;'>{{rankingList.ranking.shortName}}</view>
+    <view class="td clr_title overone" style='width:18%;'>{{rankingList.ranking.oneAmount}}</view>
+    <view class="td clr_title overone bold" style='width:20%;'>{{rankingList.ranking.predictBonus}}元</view>
+  </view>
+</view>
+<canvas canvas-id="myCanvas" style="width:{{canvasw}};height:{{canvash}};position:absolute;left:-{{canvasw}}" hidden='{{canvasHide}}' />
+<view class='defaultMask' wx:if="{{showAction}}" bindtap='closeMask' catchtouchmove="stopPageScroll"></view>
+<image src='{{shareImageSrc}}' wx:if="{{showAction}}" bindtap='closeMask' style='position:fixed;top:{{imgTop}};width:500rpx;left:125rpx;z-index:1001;height:890rpx;' catchtouchmove="stopPageScroll"></image>
+<view class='flex shareTenantAction' wx:if="{{showAction}}">
+  <view class='flex-item tc'>
+    <view class='clr_lightGray f12 tc'>
+      <image bindtap='saveImage' src='http://cdn.huolangjia.cn/upload/image/201906/788f78fe-14f4-40a2-9454-3c7da3012784.png' style='width:100rpx;height:100rpx;display:inline-block;'></image>
+    </view>
+    <view class='f12 clr_white tc'>下载到本地</view>
+  </view>
+</view>

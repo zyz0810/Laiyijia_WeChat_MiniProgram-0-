@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "订单明细",
+  "usingComponents": {
+    "header": "../../../component/header/header"
+  },
+  "navigationStyle": "custom",
+  "enablePullDownRefresh": true
+}

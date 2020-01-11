@@ -1,0 +1,49 @@
+<!--pages/rank/list/index.wxml-->
+<view class='top_bg'>
+  <image src='http://cdn.tiaohuo.com/upload/image/201802/80a591ef-9fa1-4c8a-b519-c4e03c2650c7.jpg@1920w_1l'></image>
+</view>
+<view class='my_info'>
+  <view class='lineItem'>
+    <view class='left headImg'>
+      <image src='http://thirdwx.qlogo.cn/mmopen/TFnibuosjTeJaRsJOHJj8a23DhDXVF3aDWUC820VRhqAHSZ79CTMK2H31KrA7qicujY5B2EO4eMiaMcibAK48ZlpDicia1E3TQfDzV/132'></image>
+    </view>
+    <view class='center f16'>刘磊</view>
+  </view>
+  <view class='flex num'>
+    <view class='flex-item'>
+      <view class='f14'>销售额</view>
+      <view class='f25 clr_red02 bold'>100.00</view>
+    </view>
+    <view class='flex-item'>
+      <view class='f14'>名次</view>
+      <view class='f25 clr_red02 bold'>188</view>
+    </view>
+  </view>
+</view>
+<view class='list'>
+  <view class='lineItem' bindtap='goView'>
+    <view class='left f16 clr_mediumGray'>南极人</view>
+    <view class='center  f16 clr_mediumGray'>4月第一周排名</view>
+    <view class='right'>
+      <view class='f20 clr_yellow'>188名</view>
+      <view class='f12 clr_lightGray'>当前名次</view>
+    </view>
+  </view>
+  <view class='lineItem' bindtap='goView'>
+    <view class='left f16 clr_mediumGray'>南极人</view>
+    <view class='center  f16 clr_mediumGray'>4月第一周排名</view>
+    <view class='right'>
+      <view class='f20 clr_yellow'>188名</view>
+      <view class='f12 clr_lightGray'>当前名次</view>
+    </view>
+  </view>
+  <view class='lineItem' bindtap='goView'>
+    <view class='left f16 clr_mediumGray'>南极人</view>
+    <view class='center  f16 clr_mediumGray'>4月第一周排名</view>
+    <view class='right'>
+      <view class='f20 clr_yellow'>188名</view>
+      <view class='f12 clr_lightGray'>当前名次</view>
+    </view>
+  </view>
+  <view class='f12 clr_gold02 tc intro'>销售额为0的不加入排行榜</view>
+</view>

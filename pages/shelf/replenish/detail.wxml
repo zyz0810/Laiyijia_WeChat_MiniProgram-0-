@@ -1,0 +1,64 @@
+<!--pages/shelf/replenish/detail.wxml-->
+<view style='padding:0 2%;background:#fff;'>
+  <view class='f16 bold flex' style='padding:2% 0'>
+    <view class='flex-item tl'>补货详情</view>
+    <view class='flex-item  clr_red' style='text-align:right;'>{{detailData.kindCount}}种商品，共{{detailData.sumCount}}件</view>
+  </view>
+  <view class="table">
+    <view class="tr bg-w f12 bold">
+      <view class="th" style='width:53%;'>商品名称</view>
+      <view class="th" style='width:17%;'>规格/型号</view>
+      <view class="th" style='width:15%;'>补货数量</view>
+      <view class="th" style='width:15%;'>签收数量</view>
+    </view>
+    <block wx:for="{{detailData.productRetrievalItems}}" wx:key="{{item.productId}}">
+      <view class="tr f12">
+        <view class="td overtwo" style='width:53%;'>{{item.name}}</view>
+        <view class="td" style='width:17%;'>{{item.spec}}</view>
+        <view class="td" style='width:15%;'>{{item.quantity}}</view>
+        <view class="td" style='width:15%;'>
+          <input value='{{detailData.productDelivery.status==2?item.signQuantity:item.quantity}}' data-index="{{index}}" bindinput='changeCount' disabled='{{detailData.productDelivery.status==2?true:false}}'></input>
+        </view>
+      </view>
+    </block>
+  </view>
+  <view class='f12' style='padding:2% 0;'>提示：
+    <text class='clr_red'>签收数量有异常，点击屏幕手动编辑更改</text>
+  </view>
+  <view class='f16 bold' style='padding:2% 0;'>签收备注</view>
+  <textarea class='f14' wx:if="{{detailData.productDelivery.status==2}}" disabled value='{{detailData.productDelivery.signRemark?detailData.productDelivery.signRemark:"无"}}'></textarea>
+  <textarea class='f14' wx:if="{{detailData.productDelivery.status==1}}" bindinput='signRemark' placeholder='如有异常情况，请在此备注'></textarea>
+  <view class='line'></view>
+  <view class='flex'>
+    <view class='flex-item f12'>
+      <text class='clr_mediumGray'>品牌商：</text>{{detailData.tenant.name}}</view>
+    <view class='flex-item f12'>
+      <text class='clr_mediumGray'>联系电话：</text>{{detailData.tenant.telephone}}</view>
+  </view>
+  <view class='flex '>
+    <view class='flex-item f12'>
+      <text class='clr_mediumGray'>补货时间：</text>{{detailData.createDate}}</view>
+    <view class='flex-item f12'>
+      <text class='clr_mediumGray'>签收时间：</text>{{detailData.productDelivery.signDate}}</view>
+  </view>
+  <view class='flex '>
+    <view class='flex-item f12'>
+      <text class='clr_mediumGray'>补货状态：</text>
+      <text class='clr_red' wx:if="{{detailData.productDelivery.status==1}}">待签收确认</text>
+      <text class='clr_red' wx:if="{{detailData.productDelivery.status==2}}">已完成</text>
+    </view>
+    <view class='flex-item f12'>
+      <text class='clr_mediumGray'>操作人：</text>{{detailData.operator}}</view>
+  </view>
+  <view class='flex '>
+    <view class='flex-item f10'>
+      <text class='clr_mediumGray f12'>补货单号：</text>
+      <text bindtap="clipboardData" data-sn="{{detailData.sn}}">{{detailData.sn}}</text>
+    </view>
+    <view class='flex-item f12'>
+      <text class='clr_mediumGray'>物流单号：</text>
+      <text class="logistics" bindtap='goLogistics' data-name="{{detailData.productDelivery.logisticsName}}" data-no="{{detailData.productDelivery.logisticsSn}}">{{detailData.productDelivery.logisticsSn}}</text>
+    </view>
+  </view>
+</view>
+<button class='clr_white f14 formButton optBtn' wx:if="{{detailData.productDelivery.status==1}}" bindtap='sign'>确认签收</button>

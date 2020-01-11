@@ -1,0 +1,203 @@
+<!--pages/index/home.wxml-->
+<view class='container' style='height:{{heightPage}};overflow:{{heightPage=="100vh"?"hidden":""}};padding-bottom:{{isx?"76px":"51px"}}'>
+  <view class='invitation'>
+    <view class='lineItem border'>
+      <view class='left'>
+        <text class='iconfont iconweixin1 f30 clr_wxGreen' style='height:60rpx;'></text>
+      </view>
+      <view class='center f14'>邀请好友注册</view>
+      <view class='right f12'>
+        <button class='invitate_btn f12' open-type='getUserInfo' bindgetuserinfo="inviteFriend" style='line-height:1.5;'>点击邀请好友
+          <text class='iconfont iconarrow-right-copy-copy f14'></text>
+        </button>
+      </view>
+    </view>
+    <view class='lineItem f12 clr_lightGray'>
+      <view class='center'>小贴士：邀请好友注册——好友分享商城——消费者购买返佣</view>
+    </view>
+  </view>
+  <!-- 注册文字 -->
+  <view class='privilege'>
+    <view class='f16 clr_yellow03 tc' style='position: relative;padding-left:76rpx;'>来一架会员，专享三大特权
+      <text class='iconfont icongantanhaozhong privilege_btn' bindtap='clickShowRule'></text>
+    </view>
+    <view class='f12 clr_white tc tit_two'>只需轻松注册，即可享专属权益</view>
+    <view class='flex f12 clr_white tc'>
+      <view class='flex-item privilege_item'>
+        <image src='http://cdn.laiyijia.com/upload/image/201912/3a06138f-bba1-458d-81d6-52a07ee765c3.png'></image>
+        <view>自购分享</view>
+        <view>返最高20%</view>
+      </view>
+      <view class='flex-item privilege_item'>
+        <image src='http://cdn.laiyijia.com/upload/image/201912/7fab5574-9178-49ac-b82f-e39de3debfa4.png'></image>
+        <view>会员专属</view>
+        <view>特惠商品</view>
+      </view>
+      <view class='flex-item privilege_item'>
+        <image src='http://cdn.laiyijia.com/upload/image/201912/73bd38c5-90e5-47ab-af8e-ec8da101e14b.png'></image>
+        <view>会员积分</view>
+        <view>大抽奖</view>
+      </view>
+    </view>
+    <button bindtap='toWatch' class='f16 toMiniProgramBtn' wx:if="{{auditStatus == 0}}">正在审核中</button>
+    <button bindtap='goMiniProgram' class='f16 toMiniProgramBtn' wx:if="{{auditStatus == 1}}">进入来一架商城</button>
+    <button bindtap='toWatch' class='f16 toMiniProgramBtn' wx:if="{{auditStatus == 2}}">审核未通过</button>
+  </view>
+  <!-- 特惠专区 -->
+  <view class='preferential'>
+    <view class='f16 bold'>注册会员，特惠专区</view>
+    <view class='preferential_ad'>
+      <image src='http://cdn.laiyijia.com/upload/image/202001/a81ace03-71c3-4b9e-82f0-aa334d58950f.png'></image>
+    </view>
+    <view class='preferential_product flex clearfix'>
+      <block wx:for="{{productList}}" wx:key="index">
+        <view class='preferential_product_item flex-item' data-id='{{item.productId}}' wx:if="{{index<3}}">
+          <!-- <view class='preferential_tag f10 clr_white tc'>
+            <view>新人</view>
+            <view>专享</view>
+            <view class='triangle_left'></view>
+            <view class='triangle_right'></view>
+          </view> -->
+          <view class='preferential_img'>
+            <image src='{{item.productImage?item.productImage:"/resources/images/noneimg.png"}}'></image>
+          </view>
+          <view class='preferential_txt'>
+            <text class='f14 overtwo' style='height:76rpx;'>{{item.productName}}</text>
+            <!-- <view class='stock f12 clr_lightGray' style='height:30rpx;'>
+            </view> -->
+            <view style='position: relative;margin:10rpx 0;'>
+              <text class='price f12 clr_red bold'>￥{{item.productPrice}}</text>
+              <text class='market_price f12 clr_lightGray' wx:if="{{item.productPrice<item.productMarketPrice}}">￥{{item.productMarketPrice}}</text>
+              <text class='iconfont iconbijia clr_yellow02' catchtap='goTaobao' data-name='{{item.productName}}' data-index="{{index}}"></text>
+            </view>
+            <!-- <view style='position: relative;height:40rpx;'>
+              <text class='price clr_red bold'>￥{{item.productPrice}}</text>
+              <text class='market_price f12 clr_lightGray' wx:if="{{item.productPrice<item.productMarketPrice}}">￥{{item.productMarketPrice}}</text>
+              <text class='iconfont iconbijia clr_yellow02' catchtap='goTaobao' data-name='{{item.productName}}' data-index="{{index}}"></text>
+            </view> -->
+
+
+            <view class='goMall f12 clr_red tc' data-id='{{item.productId}}' data-first='{{item.firstRebate}}' data-second='{{item.memberRebate}}' bindtap='goProduct'>跳转商城购买</view>
+          </view>
+          <view class=' actionMask f14' wx:if="{{item.show}}">
+            <view class='bijia'>
+              <view class='tc'>商品名称已复制</view>
+              <view class='price_taobao'>该商品的淘宝价为
+                <text class='clr_red bold'>￥{{item.taobaoPrice}}</text>
+              </view>
+              <view>您已成功复制商品名称，可前往淘宝商城搜索商品，进行比价！</view>
+              <view>
+                <button class='f16 clr_white' bindtap='closeBijia' data-index='{{index}}'>确定</button>
+              </view>
+            </view>
+
+          </view>
+        </view>
+      </block>
+
+      <!-- <block wx:if="{{productList.length==0}}"> -->
+      <view class='preferential_product_item flex-item' wx:if="{{productList.length==0 || productList.length==1 ||productList.length==2}}">
+        <view class='preferential_img'>
+          <image src='/resources/images/noproduct.jpg'></image>
+        </view>
+        <view class='preferential_txt' style='padding:30rpx 0 50rpx;'>
+          <view class='f14 tc'>新的商品</view>
+          <view class='f14 tc'>正在火速赶来~</view>
+        </view>
+      </view>
+      <view class='preferential_product_item flex-item' wx:if="{{productList.length==0||productList.length==1}}">
+        <view class='preferential_img'>
+          <image src='/resources/images/noproduct.jpg'></image>
+        </view>
+        <view class='preferential_txt' style='padding:30rpx 0 50rpx;'>
+          <view class='f14 tc'>新的商品</view>
+          <view class='f14 tc'>正在火速赶来~</view>
+        </view>
+      </view>
+      <view class='preferential_product_item flex-item' wx:if="{{productList.length==0}}">
+        <view class='preferential_img'>
+          <image src='/resources/images/noproduct.jpg'></image>
+        </view>
+        <view class='preferential_txt' style='padding:30rpx 0 50rpx;'>
+          <view class='f14 tc'>新的商品</view>
+          <view class='f14 tc'>正在火速赶来~</view>
+        </view>
+      </view>
+      <!-- </block> -->
+    </view>
+  </view>
+  <!-- 来一架教程专区 -->
+  <view class='course'>
+    <view class='f16 bold'>来一架教程专区</view>
+    <view class="course_cont">
+      <!--重置小圆点的样式 -->
+      <view class='course_tit f14 tc flex'>
+        <block wx:for="{{tagList}}" wx:key="index">
+          <view class="flex-item{{currentSwiper == index ? '' : ' clr_lightGray'}}" data-index='{{index}}' data-id='{{item.id}}' bindtap='swiperChangeDot'>{{item.name}}</view>
+        </block>
+      </view>
+
+      <swiper current="{{currentSwiper}}" bindchange="swiperChange" style='height:600rpx;' circular="true">
+        <block wx:for="{{courseList}}" wx:key="index">
+          <swiper-item>
+            <block wx:for="{{item}}" wx:for-item="sitem" wx:key="index">
+              <view class="swiper-item lineItem course_item" data-id="{{sitem.id}}" data-lkl='{{item.length}}' bindtap='goCourse'>
+                <view class='left'>
+                  <image src='{{sitem.image?sitem.image:"/resources/images/noneimg.png"}}'></image>
+                </view>
+                <view class='center'>
+                  <view class='f14 overtwo'>{{sitem.title}}</view>
+                  <!-- <view class='f12 clr_lightGray overtwo'>{{sitem.content}}</view> -->
+                  <view class='tr'>
+                    <text class='goTeach f14 clr_red'>去学习</text>
+                  </view>
+                </view>
+              </view>
+
+            </block>
+            <view wx:if="{{item.length<1}}" class="f12 tc" style="margin-top:100rpx;">
+              <image src='http://cdn.laiyijia.com/upload/image/201912/68d87fbe-241a-4f22-aed1-56ef643b1b1f.png' style='width:489rpx;height:360rpx;'></image>
+              <view class='f14 clr_lightGray'>暂时没有教程哦~</view>
+            </view>
+          </swiper-item>
+        </block>
+      </swiper>
+    </view>
+  </view>
+</view>
+
+<view class='activityRule' wx:if="{{showActivityRule}}">
+  <view class='iconfont iconquxiao1 clr_white' bindtap='closeRule'></view>
+  <view class="activityRuleCont f14">
+    <image src='http://cdn.laiyijia.com/upload/image/201912/a56cb663-1f89-46a5-b9d8-5ad266a2d5e7.png'></image>
+    <view class='f18 bold tc activityRuleCont_tit'>来一架会员特权说明</view>
+    <view class='clr_gray02'>1. 自购返现</view>
+    <view class='clr_gray02'>注册成为【来一架会员】，即可在
+      <text class='clr_blue03'>【来一架商城】</text>中，享受自购或分享好友购买任何商品，
+      <text class='clr_blue03'>返利最多20%的</text>【会员专属特权】</view>
+    <view class='clr_gray02'>2. 特惠商品</view>
+    <view class='clr_gray02'>来一架致力于服务所有门店主商户，注册会员后，即可以极低的【会员专属价格】购买专属特惠商品。</view>
+    <view class='clr_gray02'>所有专属特惠商品价格，来一架承诺为
+      <text class='clr_blue03'>全网最低价！</text>
+    </view>
+    <view class='clr_blue03'>备注：特惠商品需跳转【来一架商城】中购买</view>
+    <view class='clr_gray02'>3. 积分抽奖</view>
+    <view class='clr_gray02'>会员积分抽奖系统即将开启，每周期均有大奖以供抽取。敬请期待！</view>
+  </view>
+  <view class='f16 clr_white cancal_btn tc' bindtap='closeRule'>知道了</view>
+</view>
+<view class='actionMask' wx:if="{{showActivityRule}}" catchtouchmove='true'></view>
+<tabber currentIndex="{{currentIndex}}"></tabber>
+
+<!-- 邀请好友注册 -->
+<canvas canvas-id="myCanvas" style="width:{{canvasw}};height:{{canvash}};position:absolute;left:-{{canvasw}}" hidden='{{canvasHide}}' />
+<view class='defaultMask' wx:if="{{showAction}}" bindtap='closeMask' catchtouchmove="stopPageScroll" style='z-index:9999;'></view>
+<image src='{{shareImageSrc}}' wx:if="{{showAction}}" bindtap='closeMask' style='position:fixed;top:{{imgTop}};width:500rpx;left:125rpx;z-index:10001;height:890rpx;' catchtouchmove="stopPageScroll"></image>
+<view class='flex shareTenantAction' wx:if="{{showAction}}">
+  <view class='flex-item tc'>
+    <view class='clr_lightGray f12 tc'>
+      <image bindtap='saveImage' src='http://cdn.huolangjia.cn/upload/image/201906/788f78fe-14f4-40a2-9454-3c7da3012784.png' style='width:100rpx;height:100rpx;display:inline-block;'></image>
+    </view>
+    <view class='f12 clr_white tc'>下载到本地</view>
+  </view>
+</view>

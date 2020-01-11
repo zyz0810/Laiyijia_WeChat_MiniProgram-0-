@@ -1,0 +1,52 @@
+<!--pages/shop/create/index.wxml-->
+<form>
+  <view class='itemInput f14'>
+    <view class='itemleft f14'>店铺名称</view>
+    <view class='itemcenter'>
+      <input name="input" type='text' placeholder="请输入店铺名称" placeholder-class='clr_lightGray' value='{{tenantName}}' bindinput='name'/>
+    </view>
+  </view>
+  <view class='itemInput f14'>
+    <view class='itemleft f14'>主营类目</view>
+    <view class='itemcenter' bindtap='showCategory'>
+      <text class="clr_lightGray f14">{{nowCategory}}</text>
+      <text class="clr_mediumtGray f14" id="{{categoryId}}">{{categoryChoose}}</text>
+    </view>
+    <view class='itemright'>
+      <text class='iconfont iconarrow-right-copy-copy clr_lightGray'></text>
+    </view>
+  </view>
+  <view class='itemInput f14' bindtap="chooseProvince">
+    <view class='itemleft f14'>所在地区</view>
+    <view class='itemcenter'>
+      <text class="clr_lightGray f14">{{nowArea}}</text>
+      <text class="clr_mediumtGray f14" id="{{areaId}}">{{nowProvince}}</text>
+      <text class="clr_mediumtGray f14" id="{{areaId}}">{{nowCity}}</text>
+      <text class="clr_mediumtGray f14" id="{{areaId}}">{{nowDistrict}}</text>
+    </view>
+    <view class='itemright'>
+      <text class='iconfont iconarrow-right-copy-copy clr_lightGray'></text>
+    </view>
+  </view>
+  <view class='itemInput f14'>
+    <view class='itemleft f14'>店铺地址</view>
+    <view class='itemcenter'>
+      <input name="input" type='text' placeholder="请输入具体地址 " placeholder-class='clr_lightGray' value='{{tenantAdress}}' bindinput='address'/>
+    </view>
+  </view>
+  <button class='formButton f16 clr_white submit_btn' bindtap='change'>确认</button>
+</form>
+
+<view class="choosebg" wx:if="{{categoryShow}}">
+  <view class="categoryName f14" data-id="{{item.id}}" data-name="{{item.name}}" wx:for="{{category}}" wx:key="{{item.id}}" bindtap="chooseCategory">{{item.name}}</view>
+</view>
+
+<view class="choosebg" wx:if="{{provinceShow}}">
+  <view class="provincename f14" data-id="{{item.id}}" data-name="{{item.name}}" data-hasChildren='{{item.hasChildren}}' wx:for="{{province}}" wx:key="{{item.id}}" bindtap="provinceCS">{{item.name}}</view>
+</view>
+<view class="choosebg citybg" wx:if="{{cityShow}}">
+  <view class="provincename f14" data-id="{{item.id}}" data-name="{{item.name}}" data-hasChildren='{{item.hasChildren}}' wx:for="{{city}}" wx:key="{{item.id}}" bindtap="cityCS">{{item.name}}</view>
+</view>
+<view class="choosebg citybg" wx:if="{{districtShow}}">
+  <view class="provincename f14" data-id="{{item.id}}" data-name="{{item.name}}" wx:for="{{district}}" wx:key="{{item.id}}" bindtap="districtCS">{{item.name}}</view>
+</view>

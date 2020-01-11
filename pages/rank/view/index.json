@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "销售PK",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "Parser": "/pages/Parser/index"
+  }
+}

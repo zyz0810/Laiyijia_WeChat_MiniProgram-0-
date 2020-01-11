@@ -1,0 +1,71 @@
+<!--pages/team/index.wxml-->
+<view class='top'>
+  <view class='tab clearfix f16'>
+    <view class='time tc bold'>
+      <view data-id='0' data-date='today' class='time_item fl tl {{date == "today"?"clr_red":""}}' bindtap='tabClick'>今日</view>
+      <view data-id='1' data-date='thisWeek' class='time_item fl {{date == "thisWeek"?"clr_red":""}}' bindtap='tabClick'>本周</view>
+      <view data-id='2' data-date='thisMonth' class='time_item fl {{date == "thisMonth"?"clr_red":""}}' bindtap='tabClick'>本月</view>
+    </view>
+  </view>
+  <view class='f12 screen clearfix'>
+    <text class='fl'>开始日期—结束日期：</text>
+    <view class='clr_lightGray fl'>
+      <picker mode="date" value="{{dateStart}}" start="2015-09-01" end="{{nowYear}}-{{nowMonth}}-{{nowDay}}" bindchange="bindStartChange" class='fl'>
+        <view class="picker">{{dateStart}}</view>
+      </picker>
+      <view class='fl'>-</view>
+      <picker mode="date" value="{{dateEnd}}" start="2015-09-01" end="{{nowYear}}-{{nowMonth}}-{{nowDay}}" bindchange="bindEndChange" class='fl'>
+        <view class="picker">{{dateEnd}}</view>
+      </picker>
+    </view>
+
+  </view>
+  <view> </view>
+  <view class='flex middle tc'>
+    <view class='flex-item'>
+      <view class='bold member_name'>司马空空</view>
+      <view class='f11'>编号：k00551</view>
+    </view>
+    <view class='flex-item'>
+      <view class='f12 clr_white top_bg'>店主收入</view>
+      <view class='f18 bold num'>￥151.2564</view>
+    </view>
+    <view class='flex-item'>
+      <view class='f12 clr_white top_bg'>员工人数</view>
+      <view class='f18 bold num'>88人</view>
+    </view>
+  </view>
+</view>
+<view class='list f11'>
+  <view class='flex f14 bold tc title'>
+    <view class='flex-item overone'>订单名</view>
+    <view class='flex-item'>订单金额</view>
+    <view class='flex-item'>员工收入</view>
+    <view class='flex-item'>我的收入</view>
+  </view>
+  <view class='flex tc clr_lightGray'>
+    <view class='flex-item overone'>艾宝xxxxxx商品</view>
+    <view class='flex-item'>188</view>
+    <view class='flex-item'>1568，52</view>
+    <view class='flex-item'>453,63</view>
+  </view>
+  <view class='flex tc clr_lightGray'>
+    <view class='flex-item overone'>艾宝xxxxxx商品</view>
+    <view class='flex-item'>75</view>
+    <view class='flex-item'>1568，52</view>
+    <view class='flex-item'>563,63</view>
+  </view>
+  <view class='flex tc clr_lightGray'>
+    <view class='flex-item overone'>艾宝xxxxxx商品</view>
+    <view class='flex-item'>41</view>
+    <view class='flex-item'>1568，52</view>
+    <view class='flex-item'>538,63</view>
+  </view>
+  <view class='flex tc clr_lightGray'>
+    <view class='flex-item overone'>艾宝xxxxxx商品</view>
+    <view class='flex-item'>156</view>
+    <view class='flex-item'>1568，52</view>
+    <view class='flex-item'>535,63</view>
+  </view>
+  <view class="tips" hidden="{{showtips}}">{{tips}}</view>
+</view>

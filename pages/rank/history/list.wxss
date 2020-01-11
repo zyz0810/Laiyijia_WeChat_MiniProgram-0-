@@ -1,0 +1,9 @@
+/* pages/home/rank/list.wxss */
+
+.lineItem {
+  border-bottom: 15rpx solid #f2f2f2;
+}
+
+.lineItem .left {
+  align-items: flex-start;
+}

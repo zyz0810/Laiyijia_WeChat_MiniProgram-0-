@@ -1,0 +1,77 @@
+<!--pages/team/index.wxml-->
+<view class='top'>
+  <view class='tab clearfix f14'>
+    <view class='flex tc fl'>
+      <view data-id='0' data-date='today' class='flex-item {{date == "today"?"active clr_white":""}}' bindtap='tabClick'>今天</view>
+      <view data-id='1' data-date='yesterday' class='flex-item {{date == "yesterday"?"active clr_white":""}}' bindtap='tabClick'>昨天</view>
+      <view data-id='2' data-date='thisWeek' class='flex-item {{date == "thisWeek"?"active clr_white":""}}' bindtap='tabClick'>本周</view>
+    </view>
+    <!-- <view class='fr tc screen'>筛选</view> -->
+  </view>
+  <view class='flex middle tc'>
+    <view class='flex-item'>
+      <view class='f12 clr_white top_bg'>
+        <text class='iconfont iconleijishouyi f16'></text>总收益（元）</view>
+      <view class='f18 bold num'>{{teamIncomeSummary.totalBrokerage?teamIncomeSummary.totalBrokerage:0}}</view>
+    </view>
+    <view class='flex-item'>
+      <view class='f12 clr_white top_bg'>
+        <text class='iconfont iconrenwu-tuandui f16'></text>团队人数</view>
+      <view class='f18 bold num'>{{teamIncomeSummary.peopleCount?teamIncomeSummary.peopleCount:0}}人</view>
+    </view>
+    <button class='flex-item formButton' open-type='share' style='visibility:hidden;'>
+      <text class='iconfont iconyuangongguanli f40'></text>
+      <view class='f14 bold'>添加员工</view>
+    </button>
+  </view>
+</view>
+<view class='list'>
+  <view class='lineItem border_bottom' wx:for="{{dataList}}" wx:key="*this" data-id="{{item.memberId}}" bindtap='goView'>
+    <view class='left'>
+      <image src='{{item.headImg?item.headImg:"http://cdn.tiaohuo.com/upload/image/201905/6f15e40d-ce9d-453c-a17e-d058bbabade9.png"}}'></image>
+    </view>
+    <view class='center f16 bold500'>
+      <view>{{item.name}}</view>
+      <view class='f14 clr_lightGray'>{{item.createDateStr}}</view>
+    </view>
+    <view class='right'>
+      <view class='f20'>+{{item.brokerage}}</view>
+      <view class='f12 clr_orange02' wx:if="{{item.brokerage>0}}">已入账</view>
+      <!-- <view class='f12 clr_mediumGray' wx:if="{{item.brokerage==0}}">未入账</view> -->
+    </view>
+  </view>
+  <view class='table_normal'>
+    <view class="tab_tr bg-w  f14 border_bottom" style='padding-top:20rpx;'>
+      <view class="th" style='width:25%;'>姓名</view>
+      <view class="th" style='width:25%;'>订单数</view>
+      <view class="th" style='width:25%;'>订单金额</view>
+      <view class="th" style='width:25%;'>店主收入</view>
+    </view>
+    <view class="tab_tr bg-gray f12">
+      <view class="th" style='width:25%;'>司马舒淇</view>
+      <view class="th" style='width:25%;'>162.562</view>
+      <view class="th" style='width:25%;'>￥163.236</view>
+      <view class="th" style='width:25%;'>￥63.236</view>
+    </view>
+    <view class="tab_tr bg-gray f12">
+      <view class="th" style='width:25%;'>司马舒淇</view>
+      <view class="th" style='width:25%;'>162.562</view>
+      <view class="th" style='width:25%;'>￥163.236</view>
+      <view class="th" style='width:25%;'>￥63.236</view>
+    </view>
+    <view class="tab_tr bg-gray f12">
+      <view class="th" style='width:25%;'>司马舒淇</view>
+      <view class="th" style='width:25%;'>162.562</view>
+      <view class="th" style='width:25%;'>￥163.236</view>
+      <view class="th" style='width:25%;'>￥63.236</view>
+    </view>
+    <view class="tab_tr bg-gray f12">
+      <view class="th" style='width:25%;'>司马舒淇</view>
+      <view class="th" style='width:25%;'>162.562</view>
+      <view class="th" style='width:25%;'>￥163.236</view>
+      <view class="th" style='width:25%;'>￥63.236</view>
+    </view>
+  </view>
+
+  <view class="tips" hidden="{{showtips}}">{{tips}}</view>
+</view>

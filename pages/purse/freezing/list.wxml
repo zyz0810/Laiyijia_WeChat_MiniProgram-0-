@@ -1,0 +1,35 @@
+<!--pages/purse/index.wxml-->
+<view class='purseIndex'>
+  <view class='purse_info_bg'>
+    <view class='purse_info f14 clr_white'>
+      <view>
+        <view class='iconBg tc'>
+          <text class='iconfont icontixian'></text>
+        </view>
+        待入账 (元)
+      </view>
+      <view class='flex'>
+        <view class='flex-item f25'>{{freezeBalance}}</view>
+      </view>
+    </view>
+  </view>
+
+  <view class='purseBill'>
+    <view class='billList lineItem' wx:for="{{billList}}" wx:key="*this">
+      <view class='left'>
+        <image src='http://cdn.laiyijia.com/upload/image/201905/6f15e40d-ce9d-453c-a17e-d058bbabade9.png'></image>
+      </view>
+      <view class='center'>
+        <view class='f14 bold'>分润   <text class='f12 clr_gold02'>{{item.description}}</text></view>
+        <view class='f12 clr_gold02'>订单编号：{{item.orderSn}}</view>
+        <view class='f12 clr_gold02'>{{item.createDate}}</view>
+      </view>
+      <view class='right'>
+        <view class='f20'>+{{item.brokerage}}</view>
+        <view class='f12 desc clr_orange'>待入账</view>
+      </view>
+    </view>
+  </view>
+  <view class="tips" hidden="{{showtips}}">{{tips}}</view>
+
+</view>

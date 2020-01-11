@@ -1,0 +1,46 @@
+<view class="page">
+  <view class="content">
+    <view class="itemInput">
+      <view class="itemleft">银行</view>
+      <view class="itemcenter">
+        <input value='{{bankName}}' disabled placeholder-style="font-size:14px;color:#333;" />
+      </view>
+    </view>
+    <view class="itemInput">
+      <view class="itemleft">卡类型</view>
+      <view class="itemcenter">
+        <input value="{{cardType}}" bindinput="bindChange" disabled placeholder-style="font-size:14px;color:#333;" />
+      </view>
+    </view>
+
+    <view style="position:relative;">
+      <view class="itemInput" style='margin-top:6vw;height:100rpx;'>
+        <view class="itemleft">开户行</view>
+        <view class="itemcenter">
+          <input placeholder="请输入开户行关键字" value='{{searchKeyword}}' type="text" bindinput="bindChangeBank" placeholder-style="font-size:14px; " />
+        </view>
+        <view class='itemright' bindtap='searchStart'>
+          <text class='iconfont icondemo01'></text>
+        </view>
+      </view>
+      <scroll-view class="searchNameList" scroll-y wx:if="{{showSearchNameList&&searchNameList.length>0}}" bindscrolltolower="toLower">
+        <view wx:for="{{searchNameList}}" wx:key="data.id" data-id="{{item.data.id}}" data-code="{{item.data.bankCode}}" data-tel="{{item.data.tel}}" data-address="{{item.data.address}}" data-name="{{item.data.name}}" bindtap="goSearch">
+          <text wx:for="{{item.hitList}}" wx:key="index" wx:for-item="hitData" style="color:{{hitData.hit?'#43c6b8':''}}">{{hitData.name}}
+                </text>
+        </view>
+      </scroll-view>
+    </view>
+    <view class="itemInput " style='margin-top:6vw;'>
+      <view class="itemleft ">手机号</view>
+      <view class="itemcenter ">
+        <input placeholder="银行预留手机号" disabled id="phone " maxlength='11' type="number" value='{{mobile}}' placeholder-style="font-size:14px; " />
+      </view>
+    </view>
+    <view class="f14 clr_lightGray padding2 ">同意
+      <text class="clr_blue02 f12 ">《服务协议》</text>
+    </view>
+    <button class="defaultBtn " bindtap="submit" style='background:{{bgBtn}}'>更新</button>
+    <view class="tc clr_mediumGray f14 padding2 ">信息已安全加密，仅用于银行验证</view>
+  </view>
+</view>
+<!-- <view class="defaultMask" style='background:rgba(0, 0, 0, 0);' bindtap="hideSearchNameListFn" wx:if="{{showSearchNameList}}"></view> -->

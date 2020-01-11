@@ -1,0 +1,82 @@
+<!--pages/shelf/market/index.wxml-->
+<view class='item' data-id='4810' bindtap='goView'>
+  <view class='lineItem border f16 title'>
+    <view class='center'>南极人</view>
+  </view>
+  <view class='lineItem border info'>
+    <view class='left brandLogo'>
+      <image src='http://thirdwx.qlogo.cn/mmopen/TFnibuosjTeJaRsJOHJj8a23DhDXVF3aDWUC820VRhqAHSZ79CTMK2H31KrA7qicujY5B2EO4eMiaMcibAK48ZlpDicia1E3TQfDzV/132'></image>
+    </view>
+    <view class='center'>
+      <view class='f14 clr_mediumGray bold title'>NIKE（耐克）</view>
+      <view class='f12 clr_lightGray'>NIKE(耐克)，全球领先的运动品牌，致力为每位运动员带来灵感灵感</view>
+    </view>
+    <view class='right'>
+      <text class='iconfont iconarrow-right-copy-copy clr_lightGray'></text>
+    </view>
+  </view>
+  <view class='lineItem f12 clr_yellow02 bold'>
+    <view class='center tr'>新店发展奖金：186</view>
+  </view>
+</view>
+
+<view class='item' data-id='4810' bindtap='goView'>
+  <view class='lineItem border f16 title'>
+    <view class='center'>南极人</view>
+  </view>
+  <view class='lineItem border info'>
+    <view class='left brandLogo'>
+      <image src='http://thirdwx.qlogo.cn/mmopen/TFnibuosjTeJaRsJOHJj8a23DhDXVF3aDWUC820VRhqAHSZ79CTMK2H31KrA7qicujY5B2EO4eMiaMcibAK48ZlpDicia1E3TQfDzV/132'></image>
+    </view>
+    <view class='center'>
+      <view class='f14 clr_mediumGray bold title'>NIKE（耐克）</view>
+      <view class='f12 clr_lightGray'>NIKE(耐克)，全球领先的运动品牌，致力为每位运动员带来灵感灵感</view>
+    </view>
+    <view class='right'>
+      <text class='iconfont iconarrow-right-copy-copy clr_lightGray'></text>
+    </view>
+  </view>
+  <view class='lineItem f12 clr_yellow02 bold'>
+    <view class='center tr'>新店发展奖金：186</view>
+  </view>
+</view>
+<view class='item' data-id='4810' bindtap='goView'>
+  <view class='lineItem border f16 title'>
+    <view class='center'>南极人</view>
+  </view>
+  <view class='lineItem border info'>
+    <view class='left brandLogo'>
+      <image src='http://thirdwx.qlogo.cn/mmopen/TFnibuosjTeJaRsJOHJj8a23DhDXVF3aDWUC820VRhqAHSZ79CTMK2H31KrA7qicujY5B2EO4eMiaMcibAK48ZlpDicia1E3TQfDzV/132'></image>
+    </view>
+    <view class='center'>
+      <view class='f14 clr_mediumGray bold title'>NIKE（耐克）</view>
+      <view class='f12 clr_lightGray'>NIKE(耐克)，全球领先的运动品牌，致力为每位运动员带来灵感灵感</view>
+    </view>
+    <view class='right'>
+      <text class='iconfont iconarrow-right-copy-copy clr_lightGray'></text>
+    </view>
+  </view>
+  <view class='lineItem f12 clr_yellow02 bold'>
+    <view class='center tr'>新店发展奖金：186</view>
+  </view>
+</view>
+<view class='item' data-id='4810' bindtap='goView'>
+  <view class='lineItem border f16 title'>
+    <view class='center'>南极人</view>
+  </view>
+  <view class='lineItem border info'>
+    <view class='left brandLogo'>
+      <image src='http://thirdwx.qlogo.cn/mmopen/TFnibuosjTeJaRsJOHJj8a23DhDXVF3aDWUC820VRhqAHSZ79CTMK2H31KrA7qicujY5B2EO4eMiaMcibAK48ZlpDicia1E3TQfDzV/132'></image>
+    </view>
+    <view class='center'>
+      <view class='f14 clr_mediumGray bold title'>NIKE（耐克）</view>
+      <view class='f12 clr_lightGray'>NIKE(耐克)，全球领先的运动品牌，致力为每位运动员带来灵感灵感</view>
+    </view>
+    <view class='right'>
+      <text class='iconfont iconarrow-right-copy-copy clr_lightGray'></text>
+    </view>
+  </view>
+  <view class='lineItem f12 clr_yellow02 bold'>
+    <view class='center tr'>新店发展奖金：186</view>
+  </view>
+</view>

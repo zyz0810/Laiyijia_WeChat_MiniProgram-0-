@@ -1,0 +1,27 @@
+/* pages/shelf/market/index.wxss */
+
+.lineItem {
+  width: 96%;
+  padding: 6% 4%;
+  margin: 30rpx auto;
+  border-radius: 10rpx;
+  box-shadow: 0 0 10rpx #ccc;
+  box-sizing: border-box;
+}
+
+.brandLogo {
+  width: 150rpx;
+  height: 150rpx;
+  margin-right: 4%;
+  border-radius: 50%;
+}
+
+.brandLogo image {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+.title {
+  margin-bottom: 20rpx;
+}

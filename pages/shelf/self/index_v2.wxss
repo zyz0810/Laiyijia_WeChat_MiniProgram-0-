@@ -1,0 +1,226 @@
+/* pages/shelf/self/index.wxss */
+
+page {
+  background: rgba(242, 242, 242);
+}
+
+.container {
+  padding-bottom: 20rpx;
+}
+
+.tab>view {
+  padding: 20rpx 0;
+}
+
+.tab>view>text {
+  border-bottom: 6rpx solid transparent;
+  line-height: 2;
+  display: inline-block;
+}
+
+.tab>view.active>text {
+  border-bottom: 6rpx solid #fec965;
+}
+
+.list_item {
+  width: 96%;
+  /* padding: 2%; */
+  margin: 0 auto 20rpx;
+  border-radius: 10rpx;
+  box-shadow: 0 5px 10px -5px #ccc;
+}
+
+.list_item .lineItem {
+  line-height: 2;
+  padding: 4% 6% 0;
+  border-top-left-radius: 10rpx;
+  border-top-right-radius: 10rpx;
+}
+
+.list_item  .name {
+  padding: 0;
+}
+
+.list_item .sale_num {
+  line-height: 3;
+  padding: 0;
+  border-bottom-left-radius: 10rpx;
+  border-bottom-right-radius: 10rpx;
+}
+
+.list_item .lineItem .item:after {
+  content: " ";
+  position: absolute;
+  left: 2%;
+  top: 20px;
+  width: 1px;
+  height: 20px;
+  bottom: 0;
+  border-right: 15rpx solid #fec965;
+  color: #fec965;
+  -webkit-transform-origin: 100% 0;
+  transform-origin: 100% 0;
+  -webkit-transform: scaleX(0.5);
+  transform: scaleX(0.5);
+}
+
+.income {
+  padding: 4% 6%;
+}
+
+.shelf_num {
+  line-height: 2.5;
+}
+
+.add {
+  width: 100rpx;
+  height: 100rpx;
+  line-height: 90rpx;
+  background: #fec965;
+  position: fixed;
+  bottom: 60rpx;
+  right: 50rpx;
+  z-index: 99;
+  border-radius: 50%;
+}
+
+.kong {
+  /* width: 312rpx;
+  height: 364rpx; */
+  line-height: 2;
+  margin: 0 auto 80rpx;
+}
+
+.kong image {
+  width: 305rpx;
+  height: 331rpx;
+  margin-bottom: 50rpx;
+}
+
+.goMarket {
+  width: 90%;
+  line-height: 2.8;
+  margin: 0 auto;
+  background: #fec965;
+  border-radius: 10rpx;
+}
+
+movable-area {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99;
+  pointer-events: none;
+}
+
+/* movable-view {
+  width: 100rpx;
+  height: 100rpx;
+  line-height: 90rpx;
+  background: #fec965;
+  z-index: 9999;
+  position: relative;
+  border-radius: 50%;
+  pointer-events: auto;
+} */
+
+movable-view {
+  width: 150rpx;
+  height: 150rpx;
+  line-height: 150rpx;
+  z-index: 9999;
+  position: relative;
+  border-radius: 50%;
+  pointer-events: auto;
+}
+
+movable-view image {
+  width: 150rpx;
+  height: 150rpx;
+}
+
+.formButton {
+  background: transparent;
+  width: 150rpx;
+  padding: 0;
+  margin: 0;
+}
+
+.memberInfo {
+  margin: 3vw 0 0 0;
+}
+
+.memberInfo .flex-item {
+  display: flex;
+  align-items: center;
+}
+
+.memberInfo .flex-item image {
+  width: 12vw;
+  height: 12vw;
+  border-radius: 50%;
+  margin-right: 2vw;
+}
+
+.radiusWord {
+  width: 12vw;
+  height: 12vw;
+  line-height: 12vw;
+  text-align: center;
+  background: #fec965;
+  border-radius: 50%;
+  color: #fff;
+  margin-right: 2vw;
+}
+
+.shareTenantAction {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  /* background: #fff; */
+  z-index: 1002;
+  padding: 0 0 60rpx 0;
+  /* border-top-left-radius: 20rpx; *//* border-top-right-radius: 20rpx; */
+  height: 134rpx;
+}
+
+.replenish {
+  position: relative;
+}
+
+.replenish text {
+  position: absolute;
+  top: -9rpx;
+  right: 30rpx;
+  color: #fff;
+  background: red;
+  width: 35rpx;
+  height: 35rpx;
+  line-height: 35rpx;
+  border-radius: 50%;
+}
+
+.state {
+  padding: 0 30rpx;
+  border-radius: 50rpx;
+}
+
+.more {
+  margin-top: 60rpx;
+}
+
+.addBtn {
+  width: 300rpx;
+  margin: 30rpx auto;
+  line-height: 2.8;
+  border-radius: 50rpx;
+}
+
+.go_market {
+  width: 50%;
+  line-height: 3;
+  margin: 50rpx auto;
+  border-radius: 50rpx;
+}

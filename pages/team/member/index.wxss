@@ -1,0 +1,12 @@
+/* pages/team/member/index.wxss */
+.information{
+  padding: 20rpx 0 30rpx;
+}
+.information .lineItem{
+  padding: 4%;
+}
+.money{
+  line-height: 2;
+  padding: 50rpx 0;
+  background: #fff;
+}

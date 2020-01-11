@@ -1,0 +1,48 @@
+page {
+  background: #333;
+}
+
+.bankList {
+  overflow-y: scroll;
+  padding: 0 20rpx;
+  padding-bottom: 10px;
+}
+
+.bankInfoList {
+  border-radius: 6rpx;
+  padding: 15rpx 5rpx;
+  position: relative;
+  margin-bottom: 1vw;
+}
+
+.banklist_item {
+  border-radius: 6rpx;
+  background: transparent;
+}
+
+.banklist_item .left {
+  width: 80rpx;
+  height: 80rpx;
+  margin-right: 20rpx;
+  overflow: hidden;
+}
+
+.banklist_item .left image {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  background: #fff;
+}
+
+.number {
+  padding-left: 115rpx;
+}
+
+.deleteIcon {
+  margin: auto 20rpx;
+}
+
+.addBank {
+  background: #373737;
+  margin-bottom: 80rpx;
+}

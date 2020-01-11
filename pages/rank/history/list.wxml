@@ -1,0 +1,31 @@
+<!--pages/home/rank/list.wxml-->
+<wxs module="toFixed">
+  module.exports = function(num) {
+    return Math.floor(num * 100) / 100
+  }
+</wxs>
+<view class='rankList'>
+  <view class='lineItem lineItem_access f16' wx:for="{{rankList}}" wx:key="{{item.id}}" bindtap='goRankDetail' data-id="{{item.id}}" data-templete="{{item.rewardTemplateId}}">
+    <view class='left'>{{index+1}}.</view>
+    <view class='center f16'>
+      <view class='bold'>
+        {{item.activityName}}
+      </view>
+      <view class='f12 clr_lightGray'>
+        时间：{{item.startDate}}~{{item.endDate}}
+      </view>
+      <view class='flex f14' style='line-height:1;align-items:center;'>
+        <view class='flex-item tl'>销售额:
+          <text class='clr_orange'>{{toFixed(item.totalAmount)}}</text>
+        </view>
+        <!-- <view class='flex-item tl'>分润:
+          <text class='clr_orange'>{{item.totalCommission}}</text>
+        </view> -->
+        <view class='flex-item tl'>奖池金额:
+          <text class='clr_orange'>{{toFixed(item.jackpot)}}</text>
+        </view>
+      </view>
+    </view>
+    <view class='right'></view>
+  </view>
+</view>

@@ -1,0 +1,96 @@
+/* pages/login/login/index.wxss */
+
+page {
+  background: #fff;
+}
+
+.container {
+  padding-top: 100rpx;
+}
+.title{
+  margin-bottom: 10px;
+}
+
+.mobile {
+  padding: 100rpx 54rpx;
+}
+
+.mobile_num {
+  padding-bottom: 10rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  position: relative;
+  /* border-bottom: 1px solid #FAFAFA; */
+}
+.mobile_num input{
+  width: 500rpx;
+}
+.mobile_num .iconfont{
+  position: absolute;
+  top: 2px;
+  right: 0;
+}
+.txt {
+  color: #ccc;
+  /* border-right: 1px solid #C7C7C7; */
+  padding-right: 20rpx;
+  margin-right: 20rpx;
+  position: relative;
+}
+
+.txt::after {
+  content: " ";
+  position: absolute;
+  right: 0;
+  top: 10%;
+  width: 1px;
+  height: 80%;
+  bottom: 0;
+  border-right: 1px solid #e5e5e5;
+  color: #e5e5e5;
+  -webkit-transform-origin: 100% 0;
+  transform-origin: 100% 0;
+  -webkit-transform: scaleX(0.5);
+  transform: scaleX(0.5);
+}
+
+.go_code {
+  width: 100%;
+  line-height: 80rpx;
+  margin: 20rpx auto;
+  background: #dcdcdc;
+  border-radius: 10rpx;
+}
+
+.intro {
+  color: #b7b7b8;
+  margin-bottom: 5rpx;
+}
+
+.bottom {
+  position: fixed;
+  bottom: 30rpx;
+  left: 0;
+  width: 100%;
+}
+
+.line {
+  display: inline-block;
+  width: 260rpx;
+  vertical-align: middle;
+  border-top: 1rpx solid #f3f3f3;
+}
+
+.bottom .iconfont {
+  margin: 20rpx auto 10rpx;
+}
+
+.login_mode {
+  margin: 0 10rpx;
+}
+.active{
+  background: #15B521 !important;
+}
+.login_weixin>view{
+  line-height: 1;
+}

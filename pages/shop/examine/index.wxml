@@ -1,0 +1,83 @@
+<!--pages/shop/examine/index.wxml-->
+<view class='top_bg'>
+  <image src='http://cdn.laiyijia.com/upload/image/201910/392f0aef-3c31-4fb2-9cac-3844098e63b9.jpg'></image>
+</view>
+<form class='f12 form'>
+  <view class='state'>
+    <text class='f18 bold'>当前状态：正在填写审核资料</text>
+    <text class='f12 clr_white state_btn'>提交审核</text>
+  </view>
+  <view class='lineItem f14 border'>
+    <view class='left f14'>店铺名称：</view>
+    <view class='center'>
+      <input name="input" type='text' placeholder="请输入实际营业的商户名称 " placeholder-class='clr_lightGray' value='{{shopName}}' bindinput='user' />
+    </view>
+  </view>
+  <view class='lineItem f14 border' bindtap='chooseCategory'>
+    <view class='left f14'>所属行业：</view>
+    <view class='itemcenter clr_lightGray'>{{shopCategory}}</view>
+    <view class='right'>
+      <text class='iconfont iconarrow-right-copy-copy'></text>
+    </view>
+  </view>
+  <view class='lineItem f14 border' bindtap='chooseCategory'>
+    <view class='left f14'>店铺区域：</view>
+    <view class='itemcenter clr_lightGray'>
+      <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" range="{{objectMultiArray}}" range-key='name'>
+        <view class="picker" wx:if="{{province==''}}">{{fullName}}</view>
+        <view class="picker" wx:if="{{province!=''}}">{{province}}{{city}}{{district}}</view>
+      </picker>
+    </view>
+    <view class='right'>
+      <text class='iconfont iconarrow-right-copy-copy'></text>
+    </view>
+  </view>
+  <view class='lineItem f14 border address'>
+    <view class='left f14'>店铺地址：</view>
+    <view class='center clr_lightGray'>
+      <!-- <view class='f12 overtwo'>{{shopAdddress}}</view> -->
+      <!-- <view class='f12 overtwo'>安徽省合肥市包河区包河大道118号包河区政务中心北楼10层</view> -->
+      <textarea placeholder="请选择店铺地址" placeholder-class='clr_lightGray' class='shopAddress'></textarea>
+    </view>
+    <view class='right f13 clr_blue03 map_btn' bindtap='goMap'>
+      <text>地图选取</text>
+    </view>
+  </view>
+  <view class='lineItem '>
+    <view class='center map'>
+      <map id="map" longitude="{{longitudePage}}" latitude=" {{latitudePage}}" markers="{{markers}}" scale="13" show-location style="width: 100%; height: 100%;"></map>
+      {{longitude}}
+    </view>
+  </view>
+  <view class='lineItem f14 border'>
+    <view class='left f14'>联系电话：</view>
+    <view class='center'>
+      <input name="input" type='text' placeholder="请输入店铺联系电话" placeholder-class='clr_lightGray' value='{{shopPhone}}' bindinput='name' />
+    </view>
+  </view>
+  <view class='lineItem border'>
+    <view>
+      <view class='f14'>请拍门头招牌： （0/2）
+        <text class='f10 clr_red'>招牌清晰且门店正在营业/即将营业</text>
+      </view>
+
+
+
+      <view class='flex uploadImg'>
+        <view class='flex-item' bindtap="uploadzheng">
+          <image src='{{zhengmian}}' wx:if='{{zhengmian!=""}}'></image>
+          <text class='f40 bold'>+</text>
+        </view>
+        <view class='flex-item' bindtap="uploadfan">
+          <image src="{{fanmian}}" wx:if='{{fanmian!=""}}'></image>
+          <text class='f40 bold'>+</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class='submit_btn tc'>
+    <button class='f16 clr_white' bindtap='change' style='background: #6c69ff;'>保存</button>
+    <button class='f16 clr_white' bindtap='change'>提交审核</button>
+  </view>
+</form>

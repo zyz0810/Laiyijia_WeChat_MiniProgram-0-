@@ -1,0 +1,18 @@
+/* pages/course/view.wxss */
+page{
+ background: #fff;
+}
+
+video {
+  max-width: 96%;
+  height: 1000rpx;
+}
+
+.content {
+  padding: 2%;
+  box-sizing: border-box;
+  word-wrap: break-word;
+}
+image{
+  max-width: 100%;
+}
