@@ -33,8 +33,7 @@ Page({
     },
     imgdefault: '',
     bg: false,
-    areaId:'',
-    edit:false
+    areaId:''
   },
 
   /**
@@ -43,38 +42,18 @@ Page({
   onLoad: function(options) {
     // this.getCategory()
     var that = this
-
-
-    new tenant(function (res) {
-      var formContent = {}
-      formContent.masterName = res.body.contact
-      formContent.phone = res.body.phone
-      formContent.shopName = res.body.name
-      formContent.shopAddress = res.body.address
-      formContent.latitude = res.body.lng ? res.body.lng:''
-      formContent.longitude = res.body.lat ? res.body.lat:''
-      formContent.licenseNo = res.body.licenseNo
-      that.setData({
-        formContent: formContent,
-        imgdefault: res.body.licensePic,
-        fullName: res.body.areaName,
-        areaId: res.body.areaId,
-        shopId: res.body.id,
-        auditStatus: res.body.auditStatus,
-        reason: res.body.reason
-      })
-
-    }).getShopOwnerDeliveryCenter()
-
-
     if (options.category) {
       console.log(options.category)
       var shopCategory = unescape(options.category)
       that.setData({
         shopCategory: shopCategory
       })
-    } else {
-      console.log(555)
+    } else if (options.scene){
+      var scene = decodeURIComponent(options.scene)
+      console.log('555' + scene.split("#")[1])
+      that.setData({
+        extensionId: scene.split("#")[1]
+      })
     }
     new member(function(res) {
       var objectMultiArray = that.data.objectMultiArray
@@ -162,7 +141,7 @@ Page({
       city: that.data.objectMultiArray[1][this.data.addressIndexArray[1]].name,
       district: that.data.objectMultiArray[2].length > 0 ? that.data.objectMultiArray[2][this.data.addressIndexArray[2]].name : ''
     })
-    if (that.data.formContent.masterName != '' && that.data.formContent.phone != '' && that.data.formContent.code != '' && that.data.formContent.shopName != '' && that.data.formContent.shopAddress != '' && that.data.shopCategory != '请选择所属行业' && that.data.areaId != '' && that.data.checked == true) {
+    if (that.data.formContent.masterName != '' && that.data.formContent.phone != '' && that.data.formContent.code != '' && that.data.formContent.shopName != '' && that.data.formContent.shopAddress != '' && that.data.shopCategory != '请选择所属行业' && that.data.province != '' && that.data.checked == true) {
       that.setData({
         bg: true
       })
@@ -197,7 +176,7 @@ Page({
             that.setData({
               formContent: formContent
             })
-            if (that.data.formContent.masterName != '' && that.data.formContent.phone != '' && that.data.formContent.code != '' && that.data.formContent.shopName != '' && that.data.formContent.shopAddress != '' && that.data.shopCategory != '请选择所属行业' && that.data.areaId != '' && that.data.checked == true && that.data.imgdefault != '' && that.data.formContent.licenseNo != '') {
+            if (that.data.formContent.masterName != '' && that.data.formContent.phone != '' && that.data.formContent.code != '' && that.data.formContent.shopName != '' && that.data.formContent.shopAddress != '' && that.data.shopCategory != '请选择所属行业' && that.data.province != '' && that.data.checked == true && that.data.imgdefault != '' && that.data.formContent.licenseNo != '') {
               that.setData({
                 bg: true
               })
@@ -234,6 +213,15 @@ Page({
         imgdefault: tempFilePaths,
         pic: data
       })
+      if (that.data.formContent.masterName != '' && that.data.formContent.phone != '' && that.data.formContent.code != '' && that.data.formContent.shopName != '' && that.data.formContent.shopAddress != '' && that.data.shopCategory != '请选择所属行业' && that.data.province != '' && that.data.checked == true && that.data.imgdefault != '' && that.data.formContent.licenseNo != '') {
+        that.setData({
+          bg: true
+        })
+      } else {
+        that.setData({
+          bg: false
+        })
+      }
     })
   },
   submit: function() {
@@ -268,7 +256,7 @@ Page({
         title: '请选择店铺所属行业',
         icon: 'none'
       })
-    } else if (that.data.areaId == '') {
+    } else if (that.data.province == '' || that.data.city == '' || that.data.district == '') {
       wx.showToast({
         title: '请选择店铺区域',
         icon: 'none'
@@ -296,22 +284,19 @@ Page({
     } else {
       new tenant(function(res) {
         wx.showToast({
-          title: '修改成功',
+          title: '注册成功',
           icon: 'none'
         })
-        that.setData({
-          edit:true
-        })
+
         wx.setStorageSync('access_token', res.body.token.access_token)
         wx.setStorageSync('submit', true)
         wx.setStorageSync('memberIdNow', res.body.member.id) //切换店铺后存储会员id
         setTimeout(function() {
           util.navigateTo({
-            url: '/pages/index/home',
+            url: '/pages/index/index',
           })
         },500)
-      }).updateDeliveryCenter({
-        id: that.data.shopId,
+      }).registerDeliveryCenter({
         contact: that.data.formContent.masterName,
         mobile: that.data.formContent.phone,
         verifyCode: that.data.formContent.code,
@@ -321,8 +306,9 @@ Page({
         areaAddress: that.data.formContent.shopAddress,
         lng: that.data.formContent.latitude,
         lat: that.data.formContent.longitude,
+        extensionId: that.data.extensionId ? that.data.extensionId:'',
         licenseNo: that.data.formContent.licenseNo,
-        licensePic: that.data.pic ? that.data.pic : that.data.imgdefault,
+        licensePic: that.data.pic
       })
     }
   },
@@ -339,7 +325,7 @@ Page({
    */
   onShow: function() {
     var that = this;
-    if (this.data.formContent.masterName != '' && this.data.formContent.phone != '' && this.data.formContent.code != '' && this.data.formContent.shopName != '' && this.data.formContent.shopAddress != '' && this.data.shopCategory != '请选择所属行业' && this.data.areaId != '' && that.data.checked == true && that.data.imgdefault != '' && that.data.formContent.licenseNo != '') {
+    if (this.data.formContent.masterName != '' && this.data.formContent.phone != '' && this.data.formContent.code != '' && this.data.formContent.shopName != '' && this.data.formContent.shopAddress != '' && this.data.shopCategory != '请选择所属行业' && this.data.province != '' && that.data.checked == true && that.data.imgdefault != '' && that.data.formContent.licenseNo != '') {
       that.setData({
         bg: true
       })
@@ -357,7 +343,7 @@ Page({
     this.setData({
       formContent: form
     })
-    if (this.data.formContent.masterName != '' && this.data.formContent.phone != '' && this.data.formContent.code != '' && this.data.formContent.shopName != '' && this.data.formContent.shopAddress != '' && this.data.shopCategory != '请选择所属行业' && this.data.areaId != '' && that.data.checked == true && that.data.imgdefault != '' && that.data.formContent.licenseNo != '') {
+    if (this.data.formContent.masterName != '' && this.data.formContent.phone != '' && this.data.formContent.code != '' && this.data.formContent.shopName != '' && this.data.formContent.shopAddress != '' && this.data.shopCategory != '请选择所属行业' && this.data.province != '' && that.data.checked == true && that.data.imgdefault != '' && that.data.formContent.licenseNo != '') {
       that.setData({
         bg: true
       })
@@ -393,7 +379,7 @@ Page({
       that.setData({
         checked: false
       })
-      if (this.data.formContent.masterName != '' && this.data.formContent.phone != '' && this.data.formContent.code != '' && this.data.formContent.shopName != '' && this.data.formContent.shopAddress != '' && this.data.shopCategory != '请选择所属行业' && this.data.areaId != '' && that.data.checked == true && that.data.imgdefault != '' && that.data.formContent.licenseNo != '') {
+      if (this.data.formContent.masterName != '' && this.data.formContent.phone != '' && this.data.formContent.code != '' && this.data.formContent.shopName != '' && this.data.formContent.shopAddress != '' && this.data.shopCategory != '请选择所属行业' && this.data.province != '' && that.data.checked == true && that.data.imgdefault != '' && that.data.formContent.licenseNo != '') {
         that.setData({
           bg: true
         })
@@ -406,7 +392,7 @@ Page({
       that.setData({
         checked: true
       })
-      if (this.data.formContent.masterName != '' && this.data.formContent.phone != '' && this.data.formContent.code != '' && this.data.formContent.shopName != '' && this.data.formContent.shopAddress != '' && this.data.shopCategory != '请选择所属行业' && this.data.areaId != '' && that.data.checked == true && that.data.imgdefault != '' && that.data.formContent.licenseNo != '') {
+      if (this.data.formContent.masterName != '' && this.data.formContent.phone != '' && this.data.formContent.code != '' && this.data.formContent.shopName != '' && this.data.formContent.shopAddress != '' && this.data.shopCategory != '请选择所属行业' && this.data.province != '' && that.data.checked == true && that.data.imgdefault != '' && that.data.formContent.licenseNo != '') {
         that.setData({
           bg: true
         })
@@ -454,10 +440,4 @@ Page({
 
   },
 
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function() {
-
-  }
 })
