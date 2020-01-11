@@ -1,0 +1,23 @@
+<view class="tabber flex f12 tc" style='bottom:{{isx ? 25 : 0}}px;'>
+  <view class='flex-item' data-index='0' bindtap='goPage'>
+    <image src='/resources/images/tabBar/home.png' wx:if="{{currentIndex!='0'}}"></image>
+    <image src='/resources/images/tabBar/home-sel.png' wx:if="{{currentIndex=='0'}}"></image>
+    <view class='{{currentIndex=="0"?"active":""}}'>会员专区</view>
+  </view>
+  <view class='flex-item' data-index='1' bindtap='goPage'>
+    <image src='/resources/images/tabBar/category.png' wx:if="{{currentIndex!='1'}}"></image>
+    <image src='/resources/images/tabBar/category-sel.png' wx:if="{{currentIndex=='1'}}"></image>
+    <view class='{{currentIndex=="1"?"active":""}}'>奖励中心</view>
+  </view>
+  <view class='flex-item' data-index='2' bindtap='goPage'>
+    <image src='/resources/images/tabBar/cart.png' wx:if="{{currentIndex!='2'}}"></image>
+    <image src='/resources/images/tabBar/cart-sel.png' wx:if="{{currentIndex=='2'}}"></image>
+    <view class='{{currentIndex=="2"?"active":""}}'>品牌市场</view>
+  </view>
+  <view class='flex-item' data-index='3' bindtap='goPage'>
+    <image src='/resources/images/tabBar/me.png' wx:if="{{currentIndex!='3'}}"></image>
+    <image src='/resources/images/tabBar/me-sel.png' wx:if="{{currentIndex=='3'}}"></image>
+    <view class='{{currentIndex=="3"?"active":""}}'>我的店铺</view>
+  </view>
+</view>
+<view style='position:fixed;bottom:0;left:0;z-index:1003;background:#fff;width:100%;height:25px;' wx:if="{{isx}}"></view>

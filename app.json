@@ -1,0 +1,130 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/index/home",
+    "pages/course/view",
+    "pages/shop/register/index",
+    "pages/shop/register/edit",
+    "pages/shop/examine/index",
+    "pages/shop/create/index_v2",
+    "pages/shop/category/index",
+    "pages/login/index",
+    "pages/login/login/index",
+    "pages/login/code/index",
+    "pages/agreement/index",
+    "pages/shop/change/index"
+  ],
+  "subpackages": [
+    {
+      "name": "team",
+      "root": "pages/team/",
+      "pages": [
+        "index",
+        "member/index",
+        "share/index"
+      ]
+    },
+    {
+      "name": "rank",
+      "root": "pages/rank/",
+      "pages": [
+        "list/index",
+        "view/index",
+        "history/list",
+        "history/view"
+      ]
+    },
+    {
+      "name": "shelf",
+      "root": "pages/shelf/",
+      "pages": [
+        "self/index",
+        "market/index",
+        "examine/status",
+        "package/index",
+        "package/info",
+        "package/list",
+        "package/view",
+        "package/orderPay",
+        "package/order",
+        "package/orderDetail",
+        "replenish/list",
+        "replenish/detail",
+        "replenish/logistics"
+      ]
+    },
+    {
+      "name": "purse",
+      "root": "pages/purse/",
+      "pages": [
+        "index",
+        "auth/index",
+        "auth/status",
+        "bank/list",
+        "bank/add",
+        "bank/supportBank",
+        "bank/addInfo",
+        "bank/code",
+        "bank/update",
+        "cash/index",
+        "cash/status",
+        "freezing/list"
+      ]
+    },
+    {
+      "name": "order",
+      "root": "pages/order/",
+      "pages": [
+        "list/index",
+        "view/index"
+      ]
+    }
+  ],
+  "preloadRule": {
+    "pages/team/index": {
+      "network": "all",
+      "packages": [
+        "team"
+      ]
+    },
+    "pages/rank/list/index": {
+      "packages": [
+        "rank"
+      ]
+    },
+    "pages/shelf/self/index": {
+      "packages": [
+        "shelf"
+      ]
+    },
+    "pages/shelf/market/index": {
+      "packages": [
+        "shelf"
+      ]
+    },
+    "pages/purse/index": {
+      "packages": [
+        "purse"
+      ]
+    },
+    "pages/order/list/index": {
+      "packages": [
+        "order"
+      ]
+    }
+  },
+  "navigateToMiniProgramAppIdList": [
+    "wx2077547f21716759"
+  ],
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": ".",
+    "navigationBarTextStyle": "black"
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "为了更好的推荐附近门店给您"
+    }
+  }
+}
